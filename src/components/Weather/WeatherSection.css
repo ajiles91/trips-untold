@@ -1,0 +1,5 @@
+.main-weather-component {
+    background: radial-gradient(ellipse, #2793ff, #52c6ec);
+    margin-bottom: 2em;
+    border-radius: 10px;
+  }
