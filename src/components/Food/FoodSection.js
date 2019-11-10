@@ -27,8 +27,7 @@ class FoodSection extends Component {
 
       if (country && city) {
         const api_call = await fetch(
-          // `https://developers.zomato.com/api/v2.1/cities?q=${city}`
-          ` https://opentable.herokuapp.com/api/restaurants?city=${city}&state=${state}&country=${country}`
+          `https://opentable.herokuapp.com/api/restaurants?city=${city}&state=${state}&country=${country}`
         );
   
         const response = await api_call.json();

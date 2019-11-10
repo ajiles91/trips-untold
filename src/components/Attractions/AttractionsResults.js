@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
-import Image from './FoodImage';
-import Info from './FoodInfo'
+// import AttractionsImage from './AttractionsImage';
+// import AttractionsInfo from './AttractionsInfo'
 
 
-export default class FoodResults extends Component {
+export default class AttractionsResults extends Component {
     render() {
         console.log("Food Results props=>", this.props);
         return (
             <div>
-                {this.props.restaurants.map((restaurant) => {
+
+                here's where results will go
+
+                {/* {this.props.restaurants.map((restaurant) => {
                     return (
                         <div>
-                            <Image
+                            <AttractionsImage
                                 source={restaurant.image_url}
 
                             />
-                            <Info
+                            <AttractionsInfo
                                 name={restaurant.name}
                                 href={restaurant.reserve_url}
                                 price={restaurant.price}
@@ -23,7 +26,7 @@ export default class FoodResults extends Component {
                         </div>
                     )
 
-                })}
+                })} */}
             </div>
             
         )

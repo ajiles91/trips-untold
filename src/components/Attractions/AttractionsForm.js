@@ -1,7 +1,7 @@
 import React from "react";
 
-const FoodForm = props => (
-	<form onSubmit={props.getFood}>
+const AttractionsForm = props => (
+	<form onSubmit={props.getAttractions}>
     <div>{props.error ? error() : ""}</div>
       <input 
         type="text" 
@@ -24,7 +24,7 @@ const FoodForm = props => (
         autoComplete="off"
       />
       
-		<button>Get Restaurants</button>
+		<button>Get Local Attractions</button>
 	</form>
 );
 
@@ -37,4 +37,4 @@ const error = props => {
 };
   
 
-export default FoodForm;
+export default AttractionsForm;
