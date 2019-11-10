@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 
 export default class AttractionsResults extends Component {
     render() {
-        console.log("Food Results props=>", this.props);
+        console.log("Attraction Results props=>", this.props);
         return (
             <div>
 

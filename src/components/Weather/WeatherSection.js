@@ -3,6 +3,7 @@ import './WeatherSection.css';
 import WeatherForm from './WeatherForm'
 import WeatherHeader from './WeatherHeader'
 import WeatherResults from './WeatherResults'
+// import config from './../../config'
 
 class WeatherSection extends Component {
     constructor(props) {
