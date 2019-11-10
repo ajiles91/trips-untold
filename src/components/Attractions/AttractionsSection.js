@@ -12,6 +12,9 @@ class AttractionsSection extends Component {
         state:undefined,
         lon: undefined,
         lat: undefined,
+        xid: undefined,
+        name:undefined,
+        attractions_response: {},
         error: undefined
       };
     }
@@ -52,6 +55,9 @@ class AttractionsSection extends Component {
         );
 
         const attractions_response = await attractions_api_call.json();
+        this.setState({
+          attractions_response:attractions_response,
+        })
        console.log(attractions_response)
 
       } else {
