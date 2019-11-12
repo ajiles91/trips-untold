@@ -84,19 +84,40 @@ class AttractionsSection extends Component {
             //responseJson contains the response from the 2nd call.
            console.log(responseJson)
             this.setState({
-              attractions_response: responseJson
+              attractions_response: responseJson.features
             })
             console.log('Request from 2nd Call', this.state.attractions_response)
-            let arrayXID = this.state.attractions_response.features;
-            console.log('1st xid:', arrayXID)
-            console.log('1st xid:', arrayXID[0].properties)
+            let arrayXID = this.state.attractions_response;
+            let theXIDs = arrayXID.map( point =>{
+              return point.properties.xid;
+            })
+            console.log('Hopefully:',theXIDs)
             
-            let getXID = arrayXID.filter(function(obj) {
-              return obj.properties.xid === "W545849817"
-            });
+            // let getXID = arrayXID.filter(function(obj) {
+            //   return obj.properties.xid === "W545849817"
+            // });
 
             console.log('Filter Function Results:', getXID)
 
+            // Async function to send mail to a list of users.
+          // const sendMailForUsers = async (users) => {
+          //   const usersLength = users.length
+            
+          //   for (let i = 0; i < usersLength; i += 100) { 
+          //     const requests = users.slice(i, i + 100).map((user) => { // The batch size is 100. We are processing in a set of 100 users.
+          //       return triggerMailForUser(user) // Async function to send the mail.
+          //       .catch(e => console.log(`Error in sending email for ${user} - ${e}`)) // Catch the error if something goes wrong. So that it won't block the loop.
+          //     })
+              
+          //     // requests will have 100 or less pending promises. 
+          //     // Promise.all will wait till all the promises got resolves and then take the next 100.
+          //     await Promise.all(requests)
+          //     .catch(e => console.log(`Error in sending email for the batch ${i} - ${e}`)) // Catch the error.
+          //   }
+          // }
+
+
+          // sendCallForPlaces(userLists)
 
         fetch(`https://api.opentripmap.com/0.1/en/places/xid/Q5461246?apikey=5ae2e3f221c38a28845f05b637c385bf96afbd0ee0efa31f1d54771e`)
         .then(res => res.json())
@@ -106,7 +127,7 @@ class AttractionsSection extends Component {
           })
       })
       })    
-
+      console.log('Hopefully:',theXIDs)
       // } else {
       //   this.setState({
       //     error: true
