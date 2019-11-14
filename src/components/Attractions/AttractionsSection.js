@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AttractionsForm from './AttractionsForm'
 import AttractionsResults from './AttractionsResults'
+import { promised } from 'q';
 // import config from '../../config'
 
 class AttractionsSection extends Component {
@@ -13,14 +14,17 @@ class AttractionsSection extends Component {
         state:undefined,
         lon: undefined,
         lat: undefined,
-        xid: undefined,
+        xIDs: undefined,
         name:undefined,
         attractions_response: {},
-        error: undefined
+        error: undefined,
+        data:[]
       };
     }
   
-    
+    // componentDidMount() {
+    //   this.getAttractions()
+    // }
   
     getAttractions = async (event) => {
       event.preventDefault();
@@ -30,39 +34,9 @@ class AttractionsSection extends Component {
       const country = event.target.elements.country.value;
       const state = event.target.elements.state.value;
 
-      // if (country && city) {
-      //   const coord_api_call = await fetch(
-      //     `https://api.opentripmap.com/0.1/en/places/geoname?name=${city}&country=${country}&apikey=${config.ATTRACTION_API_KEY}`
-      //   );
-  
-      //   const coord_response = await coord_api_call.json();
-        
-  
-      //   this.setState({
-      //     lat: coord_response.lat,
-      //     lon: coord_response.lon,
-      //     state: state,
-      //     error: false,
-      //   });
-       
-      //   console.log(coord_response)
-      //   console.log('longitude:',this.state.lon)
-      //   console.log('latitude:',this.state.lat)
+      
 
-      //   let lat = this.state.lot;
-      //   let lon = this.state.lon;
-
-      //   const attractions_api_call = await fetch(
-      //     `https://api.opentripmap.com/0.1/en/places/radius?radius=80467.2&lon=${lon}&lat=${lat}&kinds=interesting_places&rate=2&limit=25&apikey=${ATTRACTION_API_KEY}`
-      //   );
-
-      //   const attractions_response = await attractions_api_call.json();
-      //   this.setState({
-      //     attractions_response: attractions_response,
-      //   })
-      //  console.log(attractions_response)
-
-       fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${city}&country=${country}&apikey=${ATTRACTION_API_KEY}`)
+      fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${city}&country=${country}&apikey=${ATTRACTION_API_KEY}`)
        .then(res => res.json())
         .then(responseJson => { 
           this.setState({
@@ -92,53 +66,69 @@ class AttractionsSection extends Component {
               return point.properties.xid;
             })
             console.log('Hopefully:',theXIDs)
+            this.setState({
+              xIDs: theXIDs
+            })
+            console.log('xids saved to state', this.state.xIDs)
             
-            // let getXID = arrayXID.filter(function(obj) {
-            //   return obj.properties.xid === "W545849817"
-            // });
+            let locations = theXIDs.slice(0,8).map(async xid => {
+               return await this.getLocation(xid)
+             
+            })
 
-            console.log('Filter Function Results:', getXID)
+            Promise.all(locations)
+            .then(data => {
+              console.log(data)
+              this.setState({data})
+            })
+      
+      })
+      })
+    };// end getAttractions
 
-            // Async function to send mail to a list of users.
-          // const sendMailForUsers = async (users) => {
-          //   const usersLength = users.length
-            
-          //   for (let i = 0; i < usersLength; i += 100) { 
-          //     const requests = users.slice(i, i + 100).map((user) => { // The batch size is 100. We are processing in a set of 100 users.
-          //       return triggerMailForUser(user) // Async function to send the mail.
-          //       .catch(e => console.log(`Error in sending email for ${user} - ${e}`)) // Catch the error if something goes wrong. So that it won't block the loop.
-          //     })
-              
-          //     // requests will have 100 or less pending promises. 
-          //     // Promise.all will wait till all the promises got resolves and then take the next 100.
-          //     await Promise.all(requests)
-          //     .catch(e => console.log(`Error in sending email for the batch ${i} - ${e}`)) // Catch the error.
-          //   }
-          // }
-
-
-          // sendCallForPlaces(userLists)
-
-        fetch(`https://api.opentripmap.com/0.1/en/places/xid/Q5461246?apikey=5ae2e3f221c38a28845f05b637c385bf96afbd0ee0efa31f1d54771e`)
+    getLocation = async (xid) => {
+      const result = await fetch(`https://api.opentripmap.com/0.1/en/places/xid/${xid}?apikey=5ae2e3f221c38a28845f05b637c385bf96afbd0ee0efa31f1d54771e`)
         .then(res => res.json())
           .then(responseJson => {
-            console.log(responseJson)
-            //responseJson contains the response from the 3rd call.
+            return responseJson
           })
-      })
-      })    
-      console.log('Hopefully:',theXIDs)
-      // } else {
-      //   this.setState({
-      //     error: true
-      //   });
-      // }
-    };
+      return result
+    }
+
+    handleMoreAttractions = () => {
+      let moreXIDs = this.state.xIDs
+      let moreLocations = moreXIDs.slice(9,17).map(async xid => {
+        return await this.getLocation(xid)
+      
+     })
+
+     Promise.all(moreLocations)
+     .then(data => {
+       console.log(data)
+       this.setState({data})
+     })
+    }
+
+
+    displayLocations = () => {
+      return this.state.data.map((data, index) => (
+        <>
+          <p key={index}>{data.name}</p><br />
+          <img src={data.preview.source} alt="#" />
+          <hr />
+          <button onClick={this.handleMoreAttractions}>
+            Get More Attractions
+          </button>
+        </>
+        
+      ))
+    }
     
     render() {
       console.log(process.env)
       return (
         <div>
+          {/* {this.getAttractions()} */}
         <div className="wrapper">
           <div className="main">
             <div className="container">
@@ -151,16 +141,17 @@ class AttractionsSection extends Component {
                   <AttractionsForm 
                     getAttractions={this.getAttractions} 
                   />
-
+                  
                   <AttractionsResults 
                     // restaurants={data}
                   />
-
+                  
                 </div>
               </div>
             </div>
           </div>
         </div>
+        {this.displayLocations()}
       </div>
       );
     }
