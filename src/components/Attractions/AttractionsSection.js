@@ -101,13 +101,15 @@ class AttractionsSection extends Component {
         return await this.getLocation(xid)
       
      })
-     let oldData = this.state.data;
-      oldData.push(moreLocations)
+     
+      
      Promise.all(moreLocations)
-     .then(data => {
-       console.log(data)
+     .then(newData => {
+       console.log(newData)
+       let oldData = this.state.data;
+      //  let newData = oldData.push(moreLocations)
        this.setState({
-         data:oldData.push(moreLocations)
+         data: oldData.push(newData)
         })
      })
     }
