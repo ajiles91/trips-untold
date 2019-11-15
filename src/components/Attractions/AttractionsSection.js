@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AttractionsForm from './AttractionsForm'
 import AttractionsResults from './AttractionsResults'
-import { promised } from 'q';
 // import config from '../../config'
 import './AttractionsSection.css'
 
@@ -19,7 +18,10 @@ class AttractionsSection extends Component {
         name:undefined,
         attractions_response: {},
         error: undefined,
-        data:[]
+        data:[],
+        sliceStart:9,
+        sliceEnd:17,
+        disabled: false
       };
     }
   
@@ -97,14 +99,24 @@ class AttractionsSection extends Component {
     }
 
     handleMoreAttractions = () => {
+      let start = this.state.sliceStart
+      let end = this.state.sliceEnd
       let moreXIDs = this.state.xIDs
-      let moreLocations = moreXIDs.slice(9,17).map(async xid => {
+      let moreLocations = moreXIDs.slice(start, end).map(async xid => {
+      console.log()
       // let locations = theXIDs.slice(i, i + 8).map(async xid => {
+        
+        // if (sliceEnd === 40){
+        //   return
+        // }
       return await this.getLocation(xid)
       
      })
      
-      
+     this.setState({
+      sliceStart: start=+8,
+      sliceEnd:end=+8
+    }) 
      Promise.all(moreLocations)
      .then(newData => {
       console.log('This is in newdata:', newData)
@@ -113,6 +125,11 @@ class AttractionsSection extends Component {
        this.setState({
           data:newInfo
         })
+        // Promise.all(locations)
+        //     .then(data => {
+        //       console.log(data)
+        //       this.setState({data})
+        //     })
      })
     }
 
