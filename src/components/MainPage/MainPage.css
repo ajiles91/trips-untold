@@ -8,3 +8,27 @@
     padding-top: 200px;
     margin-bottom: 45px;
 }
+
+.greeting {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    width: 80%;  
+}
+
+.row-1, 
+.row-2 {
+    max-width: 1000px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.row-2{
+    display:flex;
+    justify-content: space-around
+}
+
+.flex-item{
+    /* justify-content: space-around; */
+}

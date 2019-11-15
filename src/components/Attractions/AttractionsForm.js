@@ -1,7 +1,8 @@
 import React from "react";
+import './AttractionsForm.css'
 
 const AttractionsForm = props => (
-	<form onSubmit={props.getAttractions}>
+	<form className='attractions-form' onSubmit={props.getAttractions}>
     <div>{props.error ? error() : ""}</div>
       <input 
         type="text" 

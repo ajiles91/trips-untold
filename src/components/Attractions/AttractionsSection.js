@@ -3,6 +3,7 @@ import AttractionsForm from './AttractionsForm'
 import AttractionsResults from './AttractionsResults'
 import { promised } from 'q';
 // import config from '../../config'
+import './AttractionsSection.css'
 
 class AttractionsSection extends Component {
     constructor(props) {
@@ -98,7 +99,8 @@ class AttractionsSection extends Component {
     handleMoreAttractions = () => {
       let moreXIDs = this.state.xIDs
       let moreLocations = moreXIDs.slice(9,17).map(async xid => {
-        return await this.getLocation(xid)
+      // let locations = theXIDs.slice(i, i + 8).map(async xid => {
+      return await this.getLocation(xid)
       
      })
      
@@ -109,8 +111,7 @@ class AttractionsSection extends Component {
        let data = this.state.data;
         let newInfo = data.concat(newData)
        this.setState({
-        //  data: oldData.push(newData)
-        data:newInfo
+          data:newInfo
         })
      })
     }
