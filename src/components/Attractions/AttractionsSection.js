@@ -52,7 +52,7 @@ class AttractionsSection extends Component {
           let lat = this.state.lat;
           let lon = this.state.lon;
 
-        fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=80467.2&lon=${lon}&lat=${lat}&kinds=interesting_places&rate=2&limit=25&apikey=${ATTRACTION_API_KEY}`)
+        fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=80467.2&lon=${lon}&lat=${lat}&kinds=interesting_places&rate=2&limit=40&apikey=${ATTRACTION_API_KEY}`)
         .then(res => res.json())
           .then(responseJson => { 
             //responseJson contains the response from the 2nd call.

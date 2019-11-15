@@ -1,0 +1,10 @@
+.whole-page{
+    height: 100vh;
+    background: url("./../images/map-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    box-shadow: 0 0 10px black;
+    padding-top: 200px;
+    margin-bottom: 45px;
+}

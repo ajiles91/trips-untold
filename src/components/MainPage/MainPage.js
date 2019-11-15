@@ -1,6 +1,7 @@
 import  React, {Component} from 'react';
 import CommentsForm from './CommentsForm'
 import { Link } from "react-router-dom";
+import './MainPage.css'
 
 export default class MainPage extends Component {
   constructor(props) {
@@ -14,8 +15,8 @@ export default class MainPage extends Component {
   
   render() {
     return (
-      <div>
-        <main>
+      <div className='whole-page'>
+        
           <header>
             <h1 className='app-title'>Trips Unknown</h1>
             <p> get restaurants, peculiar attractions and restaurants</p>
@@ -34,7 +35,7 @@ export default class MainPage extends Component {
 
             <CommentsForm/>
           
-        </main>
+        
       </div>
     );
   }
