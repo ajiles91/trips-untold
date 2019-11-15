@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 
 
-export default class Comments extends Component {
+export default class CommentsForm extends Component {
   constructor(props) {
     super(props);
     this.state = {

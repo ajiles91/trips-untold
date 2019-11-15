@@ -1,5 +1,5 @@
 import  React, {Component} from 'react';
-import Comments from './Comments'
+import CommentsForm from './CommentsForm'
 import { Link } from "react-router-dom";
 
 export default class MainPage extends Component {
@@ -32,7 +32,7 @@ export default class MainPage extends Component {
                 <button>to /attractions</button>
             </Link>
 
-            <Comments/>
+            <CommentsForm/>
           
         </main>
       </div>

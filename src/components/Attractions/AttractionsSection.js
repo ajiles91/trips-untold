@@ -105,17 +105,19 @@ class AttractionsSection extends Component {
       
      Promise.all(moreLocations)
      .then(newData => {
-       console.log(newData)
-       let oldData = this.state.data;
-      //  let newData = oldData.push(moreLocations)
+      console.log('This is in newdata:', newData)
+       let data = this.state.data;
+        let newInfo = data.concat(newData)
        this.setState({
-         data: oldData.push(newData)
+        //  data: oldData.push(newData)
+        data:newInfo
         })
      })
     }
 
 
     displayLocations = () => {
+      
       return this.state.data.map((data, index) => (
         <>
           <p key={index}>{data.name}</p><br />
@@ -130,6 +132,8 @@ class AttractionsSection extends Component {
     }
     
     render() {
+      console.log('This is in data:', this.state.data)
+      
       console.log(process.env)
       return (
         <div>
