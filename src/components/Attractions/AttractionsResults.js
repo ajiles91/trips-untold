@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import AttractionsImage from './AttractionsImage';
-// import AttractionsInfo from './AttractionsInfo'
+import AttractionsImage from './AttractionsImage';
+import AttractionsInfo from './AttractionsInfo';
 
 
 export default class AttractionsResults extends Component {
@@ -9,24 +9,26 @@ export default class AttractionsResults extends Component {
         return (
             <div>
 
-                here's where results will go
-
-                {/* {this.props.restaurants.map((restaurant) => {
+                {this.props.attractions.map((attraction) => {
                     return (
-                        <div>
+                        <div className='result'>
                             <AttractionsImage
-                                source={restaurant.image_url}
+                                src={attraction.preview ? attraction.preview.source : '' }
 
                             />
                             <AttractionsInfo
-                                name={restaurant.name}
-                                href={restaurant.reserve_url}
-                                price={restaurant.price}
+                                name={attraction.name}
+                                city={attraction.address.city}
+                                des={attraction.wikipedia_extracts.text}
+                                state={attraction.address.state}
+                                href={attraction.wikipedia}
+                                road={attraction.address.road ? attraction.address.road : ''}
+                                number={attraction.address.house_number ? attraction.house_number : ''}
                             />
                         </div>
                     )
 
-                })} */}
+                })}
             </div>
             
         )

@@ -3,19 +3,20 @@ import AttractionsForm from './AttractionsForm'
 import AttractionsResults from './AttractionsResults'
 // import config from '../../config'
 import './AttractionsSection.css'
+import MoreResultsButtons from './MoreResultsButtons'
 
 class AttractionsSection extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        id: undefined,
-        city: undefined,
-        country: undefined,
-        state:undefined,
-        lon: undefined,
-        lat: undefined,
-        xIDs: undefined,
-        name:undefined,
+        id: '',
+        city: '',
+        country: '',
+        state:'',
+        lon: 0,
+        lat: 0,
+        xIDs: '',
+        name:'',
         attractions_response: {},
         error: undefined,
         data:[],
@@ -25,20 +26,14 @@ class AttractionsSection extends Component {
       };
     }
   
-    // componentDidMount() {
-    //   this.getAttractions()
-    // }
-  
     getAttractions = async (event) => {
       event.preventDefault();
-        // const ATTRACTION_API_KEY = `${config.REACT_APP_ATTRACTION_API_KEY}`;
-        const ATTRACTION_API_KEY = '5ae2e3f221c38a28845f05b637c385bf96afbd0ee0efa31f1d54771e'
+      
+      const ATTRACTION_API_KEY = '5ae2e3f221c38a28845f05b637c385bf96afbd0ee0efa31f1d54771e'
       const city = event.target.elements.city.value;
       const country = event.target.elements.country.value;
       const state = event.target.elements.state.value;
-
       
-
       fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${city}&country=${country}&apikey=${ATTRACTION_API_KEY}`)
        .then(res => res.json())
         .then(responseJson => { 
@@ -55,7 +50,7 @@ class AttractionsSection extends Component {
           let lat = this.state.lat;
           let lon = this.state.lon;
 
-        fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=80467.2&lon=${lon}&lat=${lat}&kinds=interesting_places&rate=2&limit=40&apikey=${ATTRACTION_API_KEY}`)
+        fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=80467.2&lon=${lon}&lat=${lat}&kinds=interesting_places&rate=2&limit=80&apikey=${ATTRACTION_API_KEY}`)
         .then(res => res.json())
           .then(responseJson => { 
             //responseJson contains the response from the 2nd call.
@@ -68,15 +63,14 @@ class AttractionsSection extends Component {
             let theXIDs = arrayXID.map( point =>{
               return point.properties.xid;
             })
-            console.log('Hopefully:',theXIDs)
+            
             this.setState({
               xIDs: theXIDs
             })
             console.log('xids saved to state', this.state.xIDs)
             
             let locations = theXIDs.slice(0,8).map(async xid => {
-               return await this.getLocation(xid)
-             
+              return await this.getLocation(xid)
             })
 
             Promise.all(locations)
@@ -85,7 +79,7 @@ class AttractionsSection extends Component {
               this.setState({data})
             })
       
-      })
+        })
       })
     };// end getAttractions
 
@@ -98,88 +92,88 @@ class AttractionsSection extends Component {
       return result
     }
 
-    handleMoreAttractions = () => {
+    getMoreAttractionsBackward = () => {
       let start = this.state.sliceStart
       let end = this.state.sliceEnd
       let moreXIDs = this.state.xIDs
       let moreLocations = moreXIDs.slice(start, end).map(async xid => {
-      console.log()
-      // let locations = theXIDs.slice(i, i + 8).map(async xid => {
-        
-        // if (sliceEnd === 40){
-        //   return
-        // }
-      return await this.getLocation(xid)
-      
-     })
+        return await this.getLocation(xid)
+      })
      
      this.setState({
-      sliceStart: start=+8,
-      sliceEnd:end=+8
-    }) 
-     Promise.all(moreLocations)
-     .then(newData => {
-      console.log('This is in newdata:', newData)
-       let data = this.state.data;
-        let newInfo = data.concat(newData)
+        sliceStart: start - 8,
+        sliceEnd:end - 8
+      },() => console.log(this.state.sliceEnd)) 
+
+      console.log({moreLocations})
+      Promise.all(moreLocations)
+      .then(newData => {
+        console.log('This is in newdata:', newData)
+      
        this.setState({
-          data:newInfo
+          data:newData
         })
-        // Promise.all(locations)
-        //     .then(data => {
-        //       console.log(data)
-        //       this.setState({data})
-        //     })
      })
     }
 
+    getMoreAttractionsForward = () => {
+      let start = this.state.sliceStart
+      let end = this.state.sliceEnd
+      let moreXIDs = this.state.xIDs
+      let moreLocations = moreXIDs.slice(start, end).map(async xid => {
+        return await this.getLocation(xid)
+      })
 
-    displayLocations = () => {
-      
-      return this.state.data.map((data, index) => (
-        <>
-          <p key={index}>{data.name}</p><br />
-          <img src={data.preview.source} alt="#" />
-          <hr />
-          <button onClick={this.handleMoreAttractions}>
-            Get More Attractions
-          </button>
-        </>
+     if (moreLocations.length < 8){
+        this.setState({
+          disabled:'disabled'
+        })
+     }
+     console.log({moreLocations})
+     this.setState({
+        sliceStart: start+8,
+        sliceEnd:end+8
+      },() => console.log(this.state.sliceEnd)) 
+
+
+     Promise.all(moreLocations)
+     .then(newData => {
+        console.log('This is in newdata:', newData)
         
-      ))
+       this.setState({
+          data: newData
+        })
+     })
     }
-    
+
     render() {
       console.log('This is in data:', this.state.data)
-      
-      console.log(process.env)
+      let data = this.state.data;
       return (
         <div>
-          {/* {this.getAttractions()} */}
-        <div className="wrapper">
-          <div className="main">
-            <div className="container">
-              <div className="row">
-                <div className="col-xs-5 title-container">
-                  {/* <FoodHeader /> */}
-                </div>
-                <div className="col-xs-7 form-container">
+          <div className="wrapper">
+            <div className="col-xs-7 form-container">
                   
-                  <AttractionsForm 
-                    getAttractions={this.getAttractions} 
-                  />
-                  
-                  <AttractionsResults 
-                    // restaurants={data}
-                  />
-                  
-                </div>
-              </div>
+              <AttractionsForm 
+                getAttractions={this.getAttractions} 
+              />
+
+              <MoreResultsButtons
+                getMoreAttractionsBackward={this.getMoreAttractionsBackward}
+                getMoreAttractionsForward={this.getMoreAttractionsForward}
+              />
+              
+              <AttractionsResults 
+                attractions={data}
+              />
+              
+              <MoreResultsButtons
+                getMoreAttractionsBackward={this.getMoreAttractionsBackward}
+                getMoreAttractionsForward={this.getMoreAttractionsForward}
+              />
             </div>
           </div>
         </div>
-        {this.displayLocations()}
-      </div>
       );
     }
   }
