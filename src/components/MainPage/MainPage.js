@@ -37,7 +37,7 @@ export default class MainPage extends Component {
             </Link>
           </div>
 
-        <CommentsForm/>
+        {/* <CommentsForm/> */}
 
         <CommentsDisplay />
           
