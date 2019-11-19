@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 const FoodForm = props => (
   <div>
-    <h1>You have to use US for United State for the country because of the API</h1>
+    <h1>Type in a city to get some restaurants!</h1>
+    <h2>You have to use US for United States as the input for country because of the API</h2>
     <form onSubmit={props.getFood}>
       <div>{props.error ? error() : ""}</div>
         <input 

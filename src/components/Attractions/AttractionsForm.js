@@ -3,7 +3,8 @@ import './AttractionsForm.css'
 
 const AttractionsForm = props => (
   <div>
-    <h1>You have to use US for United State for the country because of the API</h1>
+    <h1>Type in a city to get some local attractions!</h1>
+    <h2>You have to use US for United States as the input for country because of the API</h2>
     <form className='attractions-form' onSubmit={props.getAttractions}>
       <div>{props.error ? error() : ""}</div>
         <input 
