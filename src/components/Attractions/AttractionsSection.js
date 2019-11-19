@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AttractionsForm from './AttractionsForm'
 import AttractionsResults from './AttractionsResults'
-import './AttractionsSection.css'
+// import './AttractionsSection.css'
 
 
 class AttractionsSection extends Component {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './WeatherSection.css';
 import WeatherForm from './WeatherForm'
-import WeatherHeader from './WeatherHeader'
 import WeatherResults from './WeatherResults'
 // import config from './../../config'
 
@@ -65,7 +64,7 @@ class WeatherSection extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-xs-5 title-container">
-                  <WeatherHeader />
+                  
                 </div>
                 <div className="col-xs-7 form-container">
                   <WeatherForm getWeather={this.getWeather} />

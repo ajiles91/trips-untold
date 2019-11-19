@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './CommentsForm.css'
+// import './CommentsForm.css'
 
 export default class CommentsForm extends Component {
   constructor(props) {

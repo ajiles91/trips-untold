@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import FoodForm from './FoodForm'
-// import FoodHeader from './FoodHeader'
 import FoodResults from './FoodResults'
-// import config from './../../config'
+
 
 class FoodSection extends Component {
     constructor(props) {

@@ -1,7 +1,7 @@
 import  React, {Component} from 'react';
 import CommentsForm from './CommentsForm'
 import { Link } from 'react-router-dom';
-import './MainPage.css'
+// import './MainPage.css'
 import CommentsDisplay from './CommentsDisplay'
 
 export default class MainPage extends Component {

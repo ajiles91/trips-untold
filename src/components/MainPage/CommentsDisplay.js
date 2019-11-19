@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './CommentsDisplay.css'
+// import './CommentsDisplay.css'
 
 export default class CommentsDisplay extends Component {
   constructor(props) {
