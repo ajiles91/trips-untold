@@ -12,13 +12,13 @@ export default class FoodResults extends Component {
                     return (
                         <div>
                             <Image
-                                source={restaurant.image_url}
+                                source={restaurant.image_url ? restaurant.image_url : ''}
 
                             />
                             <Info
-                                name={restaurant.name}
-                                href={restaurant.reserve_url}
-                                price={restaurant.price}
+                                name={restaurant.name ? restaurant.name : '' }
+                                href={restaurant.reserve_url ? restaurant.reserve_url  : '' }
+                                price={restaurant.price ? restaurant.price : '' }
                             />
                         </div>
                     )

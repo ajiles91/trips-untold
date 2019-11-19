@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import AttractionsForm from './AttractionsForm'
 import AttractionsResults from './AttractionsResults'
-// import config from '../../config'
 import './AttractionsSection.css'
-import MoreResultsButtons from './MoreResultsButtons'
+
 
 class AttractionsSection extends Component {
     constructor(props) {
@@ -20,8 +19,10 @@ class AttractionsSection extends Component {
         attractions_response: {},
         error: undefined,
         data:[],
-        sliceStart:9,
-        sliceEnd:17,
+        sliceStart:0,
+        sliceEnd:7,
+        backButtonDisabled : true,
+        fwdButtonDisabled : false,
         disabled: false
       };
     }
@@ -68,8 +69,8 @@ class AttractionsSection extends Component {
               xIDs: theXIDs
             })
             console.log('xids saved to state', this.state.xIDs)
-            
-            let locations = theXIDs.slice(0,8).map(async xid => {
+            let maxFetchCount = this.state.xIDs.length >= 8 ? 8 : this.state.xIDs.length-1;
+            let locations = theXIDs.slice(0,maxFetchCount).map(async xid => {
               return await this.getLocation(xid)
             })
 
@@ -93,58 +94,83 @@ class AttractionsSection extends Component {
     }
 
     getMoreAttractionsBackward = () => {
-      let start = this.state.sliceStart
-      let end = this.state.sliceEnd
-      let moreXIDs = this.state.xIDs
-      let moreLocations = moreXIDs.slice(start, end).map(async xid => {
-        return await this.getLocation(xid)
-      })
-     
-     this.setState({
-        sliceStart: start - 8,
-        sliceEnd:end - 8
-      },() => console.log(this.state.sliceEnd)) 
-
-      console.log({moreLocations})
-      Promise.all(moreLocations)
-      .then(newData => {
-        console.log('This is in newdata:', newData)
-      
-       this.setState({
-          data:newData
+      //if start less than or equal to zero, ignore request
+      //else, move backwards
+      //start = start - 8;
+      //end = end - 8;
+      if (this.state.sliceStart > 0) {
+        let start = this.state.sliceStart - 8;
+        let end = this.state.sliceEnd - 8;
+        let moreXIDs = this.state.xIDs
+        let moreLocations = moreXIDs.slice(start, end).map(async xid => {
+          return await this.getLocation(xid)
         })
-     })
+      
+        this.setState({
+          sliceStart: start,
+          sliceEnd:end
+        },() => console.log(this.state.sliceEnd)) 
+
+        console.log({moreLocations})
+        Promise.all(moreLocations)
+          .then(newData => {
+          console.log('This is in newdata:', newData)
+          
+          this.setState({
+            data:newData,
+            fwdButtonDisabled : false
+          })
+        })
+          if (start === 0) {
+            this.setState({ backButtonDisabled : true })
+          }
+        } else {
+            this.setState({ backButtonDisabled : true })
+        }
     }
 
     getMoreAttractionsForward = () => {
-      let start = this.state.sliceStart
-      let end = this.state.sliceEnd
-      let moreXIDs = this.state.xIDs
-      let moreLocations = moreXIDs.slice(start, end).map(async xid => {
-        return await this.getLocation(xid)
-      })
+      // start = start + 8
+      //end = end + 8
+      //moreLocations = this.state.xIDs(start, end);
 
-     if (moreLocations.length < 8){
+      let start = this.state.sliceStart + 8;
+      let end =  this.state.xIDs.length - this.state.sliceEnd >= 8 ? this.state.sliceEnd + 8 : this.state.xIDs.length - this.state.sliceEnd;
+      if (end <= this.state.xIDs.length-1) {
+        let moreXIDs = this.state.xIDs
+        let moreLocations = moreXIDs.slice(start, end).map(async xid => {
+          return await this.getLocation(xid)
+        })
+
+      if (moreLocations.length < 8){
+          this.setState({
+            disabled:'disabled'
+          })
+      }
+      console.log({moreLocations})
+      this.setState({
+          sliceStart: start,
+          sliceEnd:end
+        },() => console.log(this.state.sliceEnd)) 
+
+
+      Promise.all(moreLocations)
+      .then(newData => {
+          console.log('This is in newdata:', newData)
+          
         this.setState({
-          disabled:'disabled'
-        })
-     }
-     console.log({moreLocations})
-     this.setState({
-        sliceStart: start+8,
-        sliceEnd:end+8
-      },() => console.log(this.state.sliceEnd)) 
-
-
-     Promise.all(moreLocations)
-     .then(newData => {
-        console.log('This is in newdata:', newData)
-        
-       this.setState({
-          data: newData
-        })
-     })
+            data: newData,
+            backButtonDisabled : false
+          })
+      })
+      if (end >= this.state.xIDs.length - 1) {
+        this.setState({ fwdButtonDisabled : true })
+      }
+    } else {
+      this.setState({ fwdButtonDisabled : true })
     }
+    }
+
 
     render() {
       console.log('This is in data:', this.state.data)
@@ -157,20 +183,15 @@ class AttractionsSection extends Component {
               <AttractionsForm 
                 getAttractions={this.getAttractions} 
               />
-
-              <MoreResultsButtons
-                getMoreAttractionsBackward={this.getMoreAttractionsBackward}
-                getMoreAttractionsForward={this.getMoreAttractionsForward}
-              />
               
               <AttractionsResults 
                 attractions={data}
+                getMoreAttractionsBackward={this.getMoreAttractionsBackward} 
+                backwardsDisabled={this.state.backButtonDisabled} 
+                getMoreAttractionsForward={this.getMoreAttractionsForward} 
+                forwardsDisabled={this.state.fwdButtonDisabled} 
               />
               
-              <MoreResultsButtons
-                getMoreAttractionsBackward={this.getMoreAttractionsBackward}
-                getMoreAttractionsForward={this.getMoreAttractionsForward}
-              />
             </div>
           </div>
         </div>

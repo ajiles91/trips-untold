@@ -21,8 +21,6 @@ class WeatherSection extends Component {
       };
     }
   
-    
-  
     getWeather = async (event) => {
       event.preventDefault();
 

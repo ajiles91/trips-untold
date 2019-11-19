@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-
-
+import './CommentsForm.css'
 
 export default class CommentsForm extends Component {
   constructor(props) {
@@ -9,14 +8,12 @@ export default class CommentsForm extends Component {
       ideas: [],
     }
   }
- 
-
   
   render() {
     return (
-      <div>
-        <p>this is where the form for comments will go</p>
-        <p>this is where the comments from database will go</p>
+      <div className = 'whole-form'>
+        <p>this is where the form for comments will go - linked to the backend</p>
+        
       </div>
     );
   }

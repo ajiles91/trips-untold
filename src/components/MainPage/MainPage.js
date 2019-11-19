@@ -1,7 +1,8 @@
 import  React, {Component} from 'react';
 import CommentsForm from './CommentsForm'
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import './MainPage.css'
+import CommentsDisplay from './CommentsDisplay'
 
 export default class MainPage extends Component {
   constructor(props) {
@@ -37,6 +38,8 @@ export default class MainPage extends Component {
           </div>
 
         <CommentsForm/>
+
+        <CommentsDisplay />
           
         
       </div>

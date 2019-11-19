@@ -1,23 +1,37 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const WeatherForm = props => (
-	<form onSubmit={props.getWeather}>
-        <div>{props.error ? error() : ""}</div>
-        <input 
-            type="text" 
-            name="city" 
-            placeholder="City"
-            autoComplete="off"
-        />
+  <div>
+    <form onSubmit={props.getWeather}>
+          <div>{props.error ? error() : ""}</div>
+          <input 
+              type="text" 
+              name="city" 
+              placeholder="City"
+              autoComplete="off"
+          />
 
-        <input 
-            type="text" 
-            name="country" 
-            placeholder="Country"
-            autoComplete="off"
-        />
-		<button>Get Weather</button>
-	</form>
+          <input 
+              type="text" 
+              name="country" 
+              placeholder="Country"
+              autoComplete="off"
+          />
+      <button>Get Weather</button>
+    </form>
+    <Link to ='/'>
+      <button>Back to Main Page</button>
+    </Link>
+
+    <Link to ='/food'>
+      <button>Go to Food Page</button>
+    </Link>
+
+    <Link to ='/attractions'>
+      <button>Go to Food Page</button>
+    </Link>
+  </div>
 );
 
 const error = props => {
