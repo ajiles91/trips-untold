@@ -23,7 +23,8 @@ class AttractionsSection extends Component {
         sliceEnd:7,
         backButtonDisabled : true,
         fwdButtonDisabled : false,
-        disabled: false
+        disabled: false,
+        userClicked: false
       };
     }
   
@@ -66,7 +67,8 @@ class AttractionsSection extends Component {
             })
             
             this.setState({
-              xIDs: theXIDs
+              xIDs: theXIDs,
+              userClicked: true
             })
             console.log('xids saved to state', this.state.xIDs)
             let maxFetchCount = this.state.xIDs.length >= 8 ? 8 : this.state.xIDs.length-1;
@@ -77,7 +79,10 @@ class AttractionsSection extends Component {
             Promise.all(locations)
             .then(data => {
               console.log(data)
-              this.setState({data})
+              this.setState({
+                data,
+                userClicked: true
+              })
             })
       
         })
@@ -189,7 +194,8 @@ class AttractionsSection extends Component {
                 getMoreAttractionsBackward={this.getMoreAttractionsBackward} 
                 backwardsDisabled={this.state.backButtonDisabled} 
                 getMoreAttractionsForward={this.getMoreAttractionsForward} 
-                forwardsDisabled={this.state.fwdButtonDisabled} 
+                forwardsDisabled={this.state.fwdButtonDisabled}
+                userClicked={this.state.userClicked} 
               />
               
             </div>

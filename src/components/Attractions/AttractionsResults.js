@@ -5,12 +5,14 @@ import AttractionsInfo from './AttractionsInfo';
 export default class AttractionsResults extends Component {
     render() {
         console.log("Attraction Results props=>", this.props);
+        const userClicked = this.props.userClicked;
+        const backwardButton = (userClicked === true) ? <button onClick={this.props.getMoreAttractionsBackward} disabled={this.props.backwardsDisabled}>back</button> : null
+        const fwdButton = (userClicked === true) ? <button onClick={this.props.getMoreAttractionsForward} disabled={this.props.forwardsDisabled}>forward</button> : null
+
         return (
             <div className='whole-attraction-result'>
-
-                <button onClick={this.props.getMoreAttractionsBackward} disabled={this.props.backwardsDisabled}>back</button>
-                <button onClick={this.props.getMoreAttractionsForward} disabled={this.props.forwardsDisabled}>forward</button>
-                    
+                {backwardButton}
+                {fwdButton}
                 {this.props.attractions.map((attraction) => {
                     return (
                         <div className='result'>
@@ -30,9 +32,8 @@ export default class AttractionsResults extends Component {
                         </div>
                     )
                 })}
-
-                <button onClick={this.props.getMoreAttractionsBackward} disabled={this.props.backwardsDisabled}>back</button>
-                <button onClick={this.props.getMoreAttractionsForward} disabled={this.props.forwardsDisabled}>forward</button>
+                {backwardButton}
+                {fwdButton}
             </div>
             
         )

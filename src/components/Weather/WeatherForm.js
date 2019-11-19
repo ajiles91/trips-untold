@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const WeatherForm = props => (
   <div>
+    <h1>You have to use US for United State for the country because of the API</h1>
     <form onSubmit={props.getWeather}>
           <div>{props.error ? error() : ""}</div>
           <input 
