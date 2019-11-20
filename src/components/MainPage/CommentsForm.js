@@ -49,6 +49,7 @@ export default class CommentsForm extends Component {
           <legend>
             Leave a comment here! Tell users about a restaurant or attraction they should check out!
           </legend>
+          
             <div>
               <label htmlFor="user-name">Name</label>
               <input
