@@ -79,6 +79,7 @@ class WeatherSection extends Component {
                     description={this.state.description}
                     error={this.state.error}
                   />
+                  
                 </div>
               </div>
             </div>
