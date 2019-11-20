@@ -32,13 +32,13 @@ export default class CommentsForm extends Component {
         comment: this.state.comment
       }),
       headers: {
-        // 'Content-type': 'application/json; charset=UTF-8'
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }
     })
     .then(response => response.json())
     .then(json => console.log(json))
+    .then(()=>this.props.updateCommentsonMainPage())
   }
 
 
