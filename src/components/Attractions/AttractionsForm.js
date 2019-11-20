@@ -1,5 +1,6 @@
 import React from "react";
 import './AttractionsForm.css'
+import { Link } from 'react-router-dom';
 
 const AttractionsForm = props => (
   <div>
@@ -30,6 +31,17 @@ const AttractionsForm = props => (
         
       <button>Get Local Attractions</button>
     </form>
+    <Link to ='/'>
+      <button>Back to Main Page</button>
+    </Link>
+
+    <Link to ='/weather'>
+      <button>Go to Weather Page</button>
+    </Link>
+
+    <Link to ='/food'>
+      <button>Go to Food Page</button>
+    </Link>
   </div>
 );
 

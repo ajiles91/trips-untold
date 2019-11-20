@@ -31,7 +31,7 @@ const WeatherForm = props => (
     </Link>
 
     <Link to ='/attractions'>
-      <button>Go to Food Page</button>
+      <button>Go to Attractions Page</button>
     </Link>
   </div>
 );

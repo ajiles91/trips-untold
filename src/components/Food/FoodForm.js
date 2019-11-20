@@ -36,11 +36,11 @@ const FoodForm = props => (
     </Link>
 
     <Link to ='/weather'>
-      <button>Go to Food Page</button>
+      <button>Go to Weather Page</button>
     </Link>
 
     <Link to ='/attractions'>
-      <button>Go to Food Page</button>
+      <button>Go to Attractions Page</button>
     </Link>
   </div>
 );
