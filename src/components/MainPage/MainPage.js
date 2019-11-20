@@ -43,7 +43,7 @@ export default class MainPage extends Component {
         
         <header className='row-1 greeting'>
           <h1 className='app-title'>Trips Unknown</h1>
-          <p> get restaurants, peculiar attractions and restaurants</p>
+          <p> get restaurants, attractions and restaurants</p>
         </header>
 
         <div className = 'row-2'>

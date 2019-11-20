@@ -47,7 +47,7 @@ export default class CommentsForm extends Component {
       <div className = 'whole-form'>
         <form className="submit-idea" onSubmit={this.handleSubmit}>
           <legend>
-            Leave a comment here.
+            Leave a comment here! Tell users about a restaurant or attraction they should check out!
           </legend>
             <div>
               <label htmlFor="user-name">Name</label>
