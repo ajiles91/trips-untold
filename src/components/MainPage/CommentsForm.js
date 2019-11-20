@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // import './CommentsForm.css'
-// import config from '../../config'
+import config from '../../config'
 
 export default class CommentsForm extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export default class CommentsForm extends Component {
     event.preventDefault();
     console.log('comment going in:',this.state.comment)
     console.log('name going in:',this.state.username)
-    fetch('https://morning-peak-14956.herokuapp.com/api/comments', {
+    fetch(`${config.API_BASE_URL}`, {
       method: 'POST',
       body: JSON.stringify({
         username: this.state.username,

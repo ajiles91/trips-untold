@@ -13,7 +13,7 @@ export default class CommentsDisplay extends Component {
   }
 
   componentDidMount(){
-    fetch('https://morning-peak-14956.herokuapp.com/api/comments')
+    fetch(`${config.API_BASE_URL}`)
     .then(response => response.json())
     .then(json => {
       console.log('comments from backend:', json)
