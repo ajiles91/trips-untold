@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import FoodForm from './FoodForm'
 import FoodResults from './FoodResults'
 
-
 class FoodSection extends Component {
     constructor(props) {
       super(props);
@@ -15,8 +14,6 @@ class FoodSection extends Component {
         error: undefined
       };
     }
-  
-    
   
     getFood = async (event) => {
       event.preventDefault();
@@ -32,15 +29,10 @@ class FoodSection extends Component {
   
         const response = await api_call.json();
         
-  
         this.setState({
           restaurants: response.restaurants,
           error: false,
         });
-       
-        console.log(response)
-        console.log(this.state.restaurants)
-       
 
       } else {
         this.setState({
@@ -52,30 +44,14 @@ class FoodSection extends Component {
     render() {
       var data = this.state.restaurants
       return (
-        <div>
         <div className="wrapper">
-          <div className="main">
-            <div className="container">
-              <div className="row">
-                <div className="col-xs-5 title-container">
-                  {/* <FoodHeader /> */}
-                </div>
-                <div className="col-xs-7 form-container">
-                  
-                  <FoodForm 
-                    getFood={this.getFood} 
-                  />
-
-                  <FoodResults 
-                    restaurants={data}
-                  />
-
-                </div>
-              </div>
-            </div>
-          </div>
+          <FoodForm 
+            getFood={this.getFood} 
+          />
+          <FoodResults 
+            restaurants={data}
+          />
         </div>
-      </div>
       );
     }
   }

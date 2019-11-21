@@ -1,0 +1,29 @@
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 1rem;
+}
+
+.restaurant-indiv {
+    max-width: 100%;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+    .restaurant-indiv {
+      width: 50%;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .restaurant-indiv  {
+      width: calc(100% / 3);
+    }
+}

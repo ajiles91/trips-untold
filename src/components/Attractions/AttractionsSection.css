@@ -1,7 +1,11 @@
+
+
 .wrapper {
   background-image: url("./../images/map-background.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   min-height: 100vh;
   min-width: 100vw;
-  text-align: center;
+  background-attachment: fixed;
 }

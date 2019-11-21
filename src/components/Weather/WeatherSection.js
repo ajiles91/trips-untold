@@ -52,40 +52,23 @@ class WeatherSection extends Component {
         });
       }
     };
-
-
     
-  
     render() {
       return (
-        <div>
         <div className="wrapper">
-          <div className="main">
-            <div className="container">
-              <div className="row">
-                <div className="col-xs-5 title-container">
-                  
-                </div>
-                <div className="col-xs-7 form-container">
-                  <WeatherForm getWeather={this.getWeather} />
-                  <WeatherResults 
-                    temp={this.state.temp} 
-                    humidity={this.state.humidity}
-                    city={this.state.city}
-                    main={this.state.main}
-                    temp_max={this.state.temp_max}
-                    temp_min={this.state.temp_min}
-                    country={this.state.country}
-                    description={this.state.description}
-                    error={this.state.error}
-                  />
-
-                </div>
-              </div>
-            </div>
-          </div>
+          <WeatherForm getWeather={this.getWeather} />
+          <WeatherResults 
+            temp={this.state.temp} 
+            humidity={this.state.humidity}
+            city={this.state.city}
+            main={this.state.main}
+            temp_max={this.state.temp_max}
+            temp_min={this.state.temp_min}
+            country={this.state.country}
+            description={this.state.description}
+            error={this.state.error}
+          />
         </div>
-      </div>
       );
     }
   }

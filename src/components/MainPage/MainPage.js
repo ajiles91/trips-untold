@@ -1,7 +1,7 @@
 import  React, {Component} from 'react';
 import CommentsForm from './CommentsForm'
 import { Link } from 'react-router-dom';
-// import './MainPage.css'
+import './MainPage.css'
 import CommentsDisplay from './CommentsDisplay'
 import config from '../../config'
 import CommentsContext from './CommentsContext';
@@ -44,7 +44,6 @@ export default class MainPage extends Component {
         <header className='row-1 greeting'>
           <h1 className='app-title'>Trips Unknown</h1>
           <p> get restaurants, attractions and restaurants</p>
-          
         </header>
 
         <div className = 'row-2'>
@@ -66,8 +65,6 @@ export default class MainPage extends Component {
           <CommentsDisplay updateCommentsonMainPage={this.updateCommentsonMainPage}/>
         </CommentsContext.Provider>
           
-            
-        
       </div>
     );
   }

@@ -22,17 +22,21 @@ const WeatherForm = props => (
           />
       <button>Get Weather</button>
     </form>
-    <Link to ='/'>
-      <button>Back to Main Page</button>
-    </Link>
+    <div className='buttons-section'>
+      <Link to ='/'>
+        <button>Back to Main Page</button>
+      </Link>
 
-    <Link to ='/food'>
-      <button>Go to Food Page</button>
-    </Link>
+      <Link to ='/food'>
+        <button>Go to Food Page</button>
+      </Link>
 
-    <Link to ='/attractions'>
-      <button>Go to Attractions Page</button>
-    </Link>
+      <Link to ='/attractions'>
+        <button>Go to Attractions Page</button>
+      </Link>
+
+    </div>
+    
   </div>
 );
 
@@ -44,5 +48,4 @@ const error = props => {
   );
 };
   
-
 export default WeatherForm;

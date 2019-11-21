@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 
 const FoodForm = props => (
-  <div>
+  <div className='whole-page'>
     <h1>Type in a city to get some restaurants!</h1>
     <h2>You have to use US for United States as the input for country because of the API</h2>
     <form onSubmit={props.getFood}>
@@ -30,18 +30,19 @@ const FoodForm = props => (
         
       <button>Get Restaurants</button>
     </form>
+    <div className='buttons-section'>
+      <Link to ='/'>
+        <button>Back to Main Page</button>
+      </Link>
 
-    <Link to ='/'>
-      <button>Back to Main Page</button>
-    </Link>
+      <Link to ='/weather'>
+        <button>Go to Weather Page</button>
+      </Link>
 
-    <Link to ='/weather'>
-      <button>Go to Weather Page</button>
-    </Link>
-
-    <Link to ='/attractions'>
-      <button>Go to Attractions Page</button>
-    </Link>
+      <Link to ='/attractions'>
+        <button>Go to Attractions Page</button>
+      </Link>
+    </div>
   </div>
 );
 

@@ -1,12 +1,16 @@
 .whole-page{
-    height: 100vh;
-    background: url("./../images/map-background.jpg");
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: url("./../images/map-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     background-attachment: fixed;
-    box-shadow: 0 0 10px black;
-    padding-top: 200px;
-    margin-bottom: 45px;
+    /* box-shadow: 0 0 10px black; */
+    /* padding-top: 200px;
+    margin-bottom: 45px; */
+    margin: 0px;
+    padding: 0px;
 }
 
 .greeting {
@@ -23,12 +27,24 @@
     padding-right: 20px;
     margin: 0 auto;
 }
-
+button{
+    height: 25px;
+    width: 200px;
+    background: #eee;
+    border: 0px;
+    height: fit-content;
+    border-radius: 5px;
+    margin-left: 10px;
+    box-shadow: 0 0 5px black;
+    font-size: 20px;
+  }
 .row-2{
     display:flex;
-    justify-content: space-around
+    justify-content: space-around;
+    margin-top:15px;
+    margin-bottom:15px;
 }
 
-.flex-item{
+/* .flex-item{
     /* justify-content: space-around; */
-}
+/* } */

@@ -1,6 +1,38 @@
 .comment {
     background-color: rgba(255, 255, 255, 0.7);
-    padding: 10px;
+    /* padding: 10px; */
     border-radius: 10px;
-    width: 80%; 
+    /* width: 80%;  */
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 1rem;
+
+}
+
+.comment-indiv {
+  max-width: 100%;
+  display: block;
+  margin-bottom:5px; 
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+    .comment-indiv {
+      width: 50%;
+      margin-top:15px;
+      margin-bottom: 15px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .comment-indiv  {
+      width: calc(100% / 3);
+    }
 }
