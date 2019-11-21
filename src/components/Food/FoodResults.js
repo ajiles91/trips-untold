@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Image from './FoodImage';
 import Info from './FoodInfo';
+import './FoodResults.css'
 
 export default class FoodResults extends Component {
     render() {

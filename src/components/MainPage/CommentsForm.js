@@ -46,35 +46,37 @@ export default class CommentsForm extends Component {
     return (
       <div className = 'whole-form'>
         <form className="submit-idea" onSubmit={this.handleSubmit}>
-          <legend>
+          <legend className='paragraph'>
             Leave a comment here! Tell users about a restaurant or attraction they should check out!
           </legend>
 
             <div>
-              <label htmlFor="user-name">Name</label>
-              <input
+              
+              <input className='comment-inputs'
                 type="text"
                 value={this.state.username}
                 onChange={this.handleChange}
                 name="username"
+                placeholder="Type Name Here"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="comments">Comment and/or Recommendation</label>
-              <textarea
+              
+              <textarea className='comment-inputs'
                 value={this.state.comment}
                 rows="15"
                 cols="43"
                 onChange={this.handleChange}
+                placeholder=" Type Recommendation or Comment Here"
                 name="comment"
                 required
               />
             </div>              
 
             <div className='button-wrapper'>
-              <button type="submit">Submit</button>
+              <button className='comment-submit' type="submit">Submit</button>
             </div>
               
           </form>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './FoodImage.css'
 export default class FoodImage extends Component {
 	render(){
 		console.log("Image PROPS=>", this.props);

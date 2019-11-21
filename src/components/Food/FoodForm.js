@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import './FoodForm.css'
 
 const FoodForm = props => (
   <div className='whole-page'>
-    <h1>Type in a city to get some restaurants!</h1>
+    <h1 className='section-header'>Type in a city to get some restaurants!</h1>
     <h2>You have to use US for United States as the input for country because of the API</h2>
     <form onSubmit={props.getFood}>
       <div>{props.error ? error() : ""}</div>

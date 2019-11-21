@@ -7,7 +7,7 @@
 .restaurant-indiv {
     max-width: 100%;
     display: block;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.85);
     border-radius: 10px;
 }
 
@@ -16,6 +16,7 @@
       display: flex;
       flex-wrap: wrap;
       flex-direction: row;
+      justify-content: space-between;
     }
     .restaurant-indiv {
       width: 50%;
@@ -24,6 +25,9 @@
 
 @media screen and (min-width: 1000px) {
     .restaurant-indiv  {
-      width: calc(100% / 3);
+      width: calc(90% / 3);
+      padding: 1.5%;
+      margin: 20px 0;
+      box-shadow: 10px 25px 20px 20px rgba(0.3, 0.3, 0.3, 0.5)
     }
 }

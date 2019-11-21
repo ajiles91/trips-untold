@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const WeatherForm = props => (
   <div>
-   <h1>Type in a city to get the local weather!</h1>
+   <h1 className='section-header'>Type in a city to get the local weather!</h1>
     <h2>You have to use US for United States as the input for country because of the API</h2>
     <form onSubmit={props.getWeather}>
           <div>{props.error ? error() : ""}</div>

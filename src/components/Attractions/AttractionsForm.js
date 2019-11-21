@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const AttractionsForm = props => (
   <div>
-    <h1>Type in a city to get some local attractions!</h1>
+    <h1 className='section-header'>Type in a city to get some local attractions!</h1>
     <h2>You have to use US for United States as the input for country because of the API</h2>
     <h2>Also clicking backward and forward too quickly causes the API to freeze</h2>
     <form className='attractions-form' onSubmit={props.getAttractions}>

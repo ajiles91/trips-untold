@@ -3,5 +3,24 @@
     padding: 10px;
     border-radius: 10px;
     width: 80%;
-    margin-bottom: 15px; 
+    margin: 0 auto 15px
+}
+
+.textarea-label {
+    vertical-align: top;
+}
+.comment-inputs{
+    margin: 10px auto;
+    width: 60%;
+    display: block;
+}
+
+.comment-submit {
+    margin: 0 auto;
+    display: block;
+    background-color: black;
+    color: white;
+}
+.paragraph {
+    text-align: center;
 }
