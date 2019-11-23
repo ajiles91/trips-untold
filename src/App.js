@@ -50,4 +50,4 @@ export default class App extends Component {
   }
 }
 
-
+// "dest":"/static/myicon.ico"
