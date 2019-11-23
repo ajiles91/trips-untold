@@ -42,21 +42,21 @@ export default class MainPage extends Component {
       <div className='whole-page'>
         
         <header className='row-1 greeting'>
-          <h1 className='app-title'>Trips Unknown</h1>
+          <h1 className='app-title'>Trips Unplanned</h1>
           <p> get restaurants, attractions and restaurants</p>
         </header>
 
         <div className = 'row-2'>
           <Link to='/weather'>
-            <button className='flex-item'>to /weather</button>
+            <button className='flex-item'>Go To Weather</button>
           </Link>
 
           <Link to='/food'>
-            <button className='flex-item'>to /food</button>
+            <button className='flex-item'>Go To Food</button>
           </Link>
 
           <Link to='/attractions'>
-            <button className='flex-item'>to /attractions</button>
+            <button className='flex-item'>Go To Attractions</button>
           </Link>
         </div>
 
