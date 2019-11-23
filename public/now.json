@@ -7,6 +7,10 @@
           "dest": "/static/$1"
         },
         {
+          "src":"^/favixon.ico$",
+          "dest": "../static/myicon.ico"
+        },
+        {
           "src": ".*",
           "dest": "/index.html"
         }
