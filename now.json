@@ -8,7 +8,7 @@
         },
         {
           "src":"^/favicon.ico$",
-          "dest": "/static/myicon.ico"
+          "dest":"https://raw.githubusercontent.com/ajiles91/trips-unplanned/master/static/myicon.ico"
         },
         {
           "src": ".*",

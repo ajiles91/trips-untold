@@ -12,8 +12,11 @@ export default class AttractionsResults extends Component {
 
         return (
             <div className='whole-attraction-result'>
-                {backwardButton}
-                {fwdButton}
+                <div className = 'buttons-section'>
+                    {backwardButton}
+                    {fwdButton}
+                </div>
+                
 
                 <div className='results-container'>
                     <div className='grid'>
@@ -39,8 +42,10 @@ export default class AttractionsResults extends Component {
                     </div>
                 </div>                
                 
-                {backwardButton}
-                {fwdButton}
+                <div className = 'buttons-section'>
+                    {backwardButton}
+                    {fwdButton}
+                </div>
             </div>
             
         )
