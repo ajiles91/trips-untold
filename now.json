@@ -1,0 +1,14 @@
+{
+    "version": 2,
+    "name": "ajiles91-trips-unplanned-app",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+  }
