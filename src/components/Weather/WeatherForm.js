@@ -8,7 +8,7 @@ const WeatherForm = props => (
       <h2>You have to use US for United States as the input for country because of the API</h2>
     </div>
    
-    <form onSubmit={props.getWeather}>
+    <form className='attractions-form' onSubmit={props.getWeather}>
           <div>{props.error ? error() : ""}</div>
           <input 
               type="text" 

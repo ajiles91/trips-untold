@@ -6,7 +6,7 @@ const FoodForm = props => (
   <div className='whole-page'>
     <h1 className='section-header'>Type in a city to get some restaurants!</h1>
     <h2>You have to use US for United States as the input for country because of the API</h2>
-    <form onSubmit={props.getFood}>
+    <form className='attractions-form' onSubmit={props.getFood}>
       <div>{props.error ? error() : ""}</div>
         <input 
           type="text" 
