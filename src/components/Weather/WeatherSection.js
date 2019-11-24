@@ -25,10 +25,19 @@ class WeatherSection extends Component {
 
       const city = event.target.elements.city.value;
       const country = event.target.elements.country.value;
+      var countryNormalization = country.toLowerCase();
+
+      if (countryNormalization === 'usa' || countryNormalization === 'united states') {
+        countryNormalization = 'us'
+      } else {
+        countryNormalization = country
+      }      
+
+
       const API_KEY = 'f3d7f5d4c72cfbaa2f55436ddc5646b1';
       if (country && city) {
         const api_call = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}`
+          `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryNormalization}&appid=${API_KEY}`
         );
   
         const response = await api_call.json();

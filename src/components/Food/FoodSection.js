@@ -22,9 +22,17 @@ class FoodSection extends Component {
       const country = event.target.elements.country.value;
       const state = event.target.elements.state.value;
 
+      var countryNormalization = country.toLowerCase();
+
+      if (countryNormalization === 'usa' || countryNormalization === 'united states') {
+        countryNormalization = 'us'
+      } else {
+        countryNormalization = country
+      }
+
       if (country && city) {
         const api_call = await fetch(
-          `https://opentable.herokuapp.com/api/restaurants?city=${city}&state=${state}&country=${country}`
+          `https://opentable.herokuapp.com/api/restaurants?city=${city}&state=${state}&country=${countryNormalization}`
         );
   
         const response = await api_call.json();

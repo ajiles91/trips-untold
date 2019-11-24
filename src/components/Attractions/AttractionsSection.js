@@ -35,8 +35,16 @@ class AttractionsSection extends Component {
       const city = event.target.elements.city.value;
       const country = event.target.elements.country.value;
       const state = event.target.elements.state.value;
+
+      var countryNormalization = country.toLowerCase();
+
+      if(countryNormalization === 'usa' || countryNormalization === 'united states'){
+        countryNormalization = 'us'
+      } else{
+        countryNormalization = country
+      }
       
-      fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${city}&country=${country}&apikey=${ATTRACTION_API_KEY}`)
+      fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${city}&country=${countryNormalization}&apikey=${ATTRACTION_API_KEY}`)
        .then(res => res.json())
         .then(responseJson => { 
           this.setState({
