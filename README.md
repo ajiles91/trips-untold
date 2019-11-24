@@ -2,7 +2,7 @@
 Trips Unplanned is a fullstack app that helps users to plan a trip to major cities with weather, restaurants and info for local attractions.
 
 # Technologies Used:
-HTML, CSS, React.js, Node.js, Express.js, PostgreSQL
+HTML, CSS, React.js, Node.js, Express.js, PostgreSQL, SQL
 
 # Important Links:
 Live Link: https://ajiles91-trips-unplanned-app.now.sh/
