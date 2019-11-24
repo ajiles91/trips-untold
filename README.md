@@ -6,7 +6,7 @@ HTML, CSS, React.js, Node.js, Express.js, PostgreSQL, SQL
 
 # Important Links:
 Live Link: https://ajiles91-trips-unplanned-app.now.sh/
-Client Repo: https://github.com/ajiles91/trips-unplanned
+API Repo: https://github.com/ajiles91/trips-unplanned-api
 
 # Screenshots:
 ![trips-unplanned-main-page](screenshots/trips-unplanned-main-page.jpg)
@@ -15,19 +15,19 @@ Client Repo: https://github.com/ajiles91/trips-unplanned
 ![trips-unplanned-weather-page](screenshots/trips-unplanned-weather-page.jpg)
 
 # API Documentation:
-The comments/recommendations section has an API with one endpoint /api/comments.  GET /api/cpmments retrieves all the stored comments and displays them on the main page - stored as an array of objects
-## Properties of Each Object
+The comments/recommendations section has an API with one endpoint /api/comments.  GET /api/comments retrieves all the stored comments and displays them on the main page - stored as an array of objects
+## GET /api/comments
+Properties of Each Object
 -id:12 (number, generated when posted in database)
 -username:Fake Name (string)
 -comment:Comments about App or Recommendation(string)
-
+## POST /api/comments
 POST /api/comments - user submits their name and comment and/or recommendation in a form on the main page and it is sent as a POST request to the database
-## Properties of Each Object
+Properties of Each Object
 -id:12 (number, generated when posted in database)
 -username:Fake Name (string)
 -comment:Comments about App or Recommendation(string)
 
-The API is hosted here : https://github.com/ajiles91/trips-unplanned-api
 # Future Features
--be able to submit the form with the city info from the main page and have basic weather info, a restuarant and an attraction display on main page then click to each page for more info
+-be able to submit the form with the city info from the main page and have basic weather info, a restaurant and an attraction display on main page then click to each page for more info
 
