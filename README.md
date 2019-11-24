@@ -27,6 +27,7 @@ POST /api/comments - user submits their name and comment and/or recommendation i
 -username:Fake Name (string)
 -comment:Comments about App or Recommendation(string)
 
+The API is hosted here : https://github.com/ajiles91/trips-unplanned-api
 # Future Features
 -be able to submit the form with the city info from the main page and have basic weather info, a restuarant and an attraction display on main page then click to each page for more info
 
