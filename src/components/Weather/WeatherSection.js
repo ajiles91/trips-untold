@@ -44,7 +44,6 @@ class WeatherSection extends Component {
           description: response.weather[0].description,
           error: false
         });
-        console.log(response)
 
       } else {
         this.setState({

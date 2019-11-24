@@ -21,9 +21,12 @@ The comments/recommendations section has an API with one endpoint /api/comments.
 -username:Fake Name (string)
 -comment:Comments about App or Recommendation(string)
 
-POST /api/comments - user submits their name and comment and/or recommendation
-## Properties
+POST /api/comments - user submits their name and comment and/or recommendation in a form on the main page and it is sent as a POST request to the database
+## Properties of Each Object
 -id:12 (number, generated when posted in database)
 -username:Fake Name (string)
 -comment:Comments about App or Recommendation(string)
+
+# Future Features
+-be able to submit the form with the city info from the main page and have basic weather info, a restuarant and an attraction display on main page then click to each page for more info
 

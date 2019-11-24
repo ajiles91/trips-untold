@@ -3,7 +3,6 @@ import './AttractionsInfo.css'
 
 export default class AttractionsInfo extends Component {
 	render(){
-		console.log("PROPS=>", this.props);
 		return(
 			<div className='attractions-info'>
 				<header>{this.props.name}</header>

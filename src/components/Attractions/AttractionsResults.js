@@ -5,7 +5,7 @@ import './AttractionsResults.css'
 
 export default class AttractionsResults extends Component {
     render() {
-        console.log("Attraction Results props=>", this.props);
+        
         const userClicked = this.props.userClicked;
         const backwardButton = (userClicked === true) ? <button onClick={this.props.getMoreAttractionsBackward} disabled={this.props.backwardsDisabled}>back</button> : null
         const fwdButton = (userClicked === true) ? <button onClick={this.props.getMoreAttractionsForward} disabled={this.props.forwardsDisabled}>forward</button> : null

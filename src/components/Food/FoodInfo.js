@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 export default class FoodInfo extends Component {
 	render(){
-		console.log("PROPS=>", this.props);
 		return(
 			<div>
 				<header>{this.props.name}</header>

@@ -46,8 +46,6 @@ class AttractionsSection extends Component {
            error: false,
           })
           //responseJson contains the response from the first call.
-          console.log('longitude:',this.state.lon)
-          console.log('latitude:',this.state.lat)
 
           let lat = this.state.lat;
           let lon = this.state.lon;
@@ -56,11 +54,11 @@ class AttractionsSection extends Component {
         .then(res => res.json())
           .then(responseJson => { 
             //responseJson contains the response from the 2nd call.
-           console.log(responseJson)
+      
             this.setState({
               attractions_response: responseJson.features
             })
-            console.log('Request from 2nd Call', this.state.attractions_response)
+          
             let arrayXID = this.state.attractions_response;
             let theXIDs = arrayXID.map( point =>{
               return point.properties.xid;
@@ -70,7 +68,7 @@ class AttractionsSection extends Component {
               xIDs: theXIDs,
               userClicked: true
             })
-            console.log('xids saved to state', this.state.xIDs)
+            
             let maxFetchCount = this.state.xIDs.length >= 8 ? 8 : this.state.xIDs.length-1;
             let locations = theXIDs.slice(0,maxFetchCount).map(async xid => {
               return await this.getLocation(xid)
@@ -78,7 +76,7 @@ class AttractionsSection extends Component {
 
             Promise.all(locations)
             .then(data => {
-              console.log(data)
+              
               this.setState({
                 data,
                 userClicked: true
@@ -114,12 +112,11 @@ class AttractionsSection extends Component {
         this.setState({
           sliceStart: start,
           sliceEnd:end
-        },() => console.log(this.state.sliceEnd)) 
+        },) 
 
-        console.log({moreLocations})
+        
         Promise.all(moreLocations)
           .then(newData => {
-          console.log('This is in newdata:', newData)
           
           this.setState({
             data:newData,
@@ -152,16 +149,15 @@ class AttractionsSection extends Component {
             disabled:'disabled'
           })
       }
-      console.log({moreLocations})
+      
       this.setState({
           sliceStart: start,
           sliceEnd:end
-        },() => console.log(this.state.sliceEnd)) 
+        },) 
 
 
       Promise.all(moreLocations)
       .then(newData => {
-          console.log('This is in newdata:', newData)
           
         this.setState({
             data: newData,
@@ -178,7 +174,6 @@ class AttractionsSection extends Component {
 
 
     render() {
-      console.log('This is in data:', this.state.data)
       let data = this.state.data;
       return (
         <div>

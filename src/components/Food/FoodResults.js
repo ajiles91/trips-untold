@@ -5,7 +5,6 @@ import './FoodResults.css'
 
 export default class FoodResults extends Component {
     render() {
-        console.log("Food Results props=>", this.props);
         return (
             <div className='container'>
                 <div className='grid'>

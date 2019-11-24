@@ -18,7 +18,6 @@ export default class MainPage extends Component {
     fetch(`${config.API_BASE_URL}`)
     .then(response => response.json())
     .then(json => {
-      console.log('comments from backend:', json)
       this.setState({
         comments:json
       })
@@ -29,7 +28,6 @@ export default class MainPage extends Component {
     fetch(`${config.API_BASE_URL}`)
     .then(response => response.json())
     .then(json => {
-      console.log('comments from backend:', json)
       this.setState({
         comments:json
       })

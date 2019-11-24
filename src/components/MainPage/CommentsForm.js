@@ -23,8 +23,7 @@ export default class CommentsForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('comment going in:',this.state.comment)
-    console.log('name going in:',this.state.username)
+
     fetch(`${config.API_BASE_URL}`, {
       method: 'POST',
       body: JSON.stringify({
