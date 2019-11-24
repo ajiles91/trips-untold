@@ -25,6 +25,7 @@ class WeatherSection extends Component {
 
       const city = event.target.elements.city.value;
       const country = event.target.elements.country.value;
+      
       var countryNormalization = country.toLowerCase();
 
       if (countryNormalization === 'usa' || countryNormalization === 'united states') {

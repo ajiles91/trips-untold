@@ -18,6 +18,13 @@ const WeatherForm = props => (
           />
 
           <input 
+            type="text" 
+            name="state" 
+            placeholder="State"
+            autoComplete="off"
+          />
+
+          <input 
               type="text" 
               name="country" 
               placeholder="Country"
