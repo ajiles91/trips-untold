@@ -15,8 +15,10 @@ API Repo: https://github.com/ajiles91/trips-unplanned-api
 ![trips-unplanned-weather-page](screenshots/trips-unplanned-weather-page.jpg)
 
 # API Documentation:
-The comments/recommendations section has an API with one endpoint /api/comments.  GET /api/comments retrieves all the stored comments and displays them on the main page - stored as an array of objects
+
 ## GET /api/comments
+The comments/recommendations section has an API with one endpoint /api/comments.  GET /api/comments retrieves all the stored comments and displays them on the main page - stored as an array of objects
+
 Properties of Each Object
 -id:12 (number, generated when posted in database)
 -username:Fake Name (string)
