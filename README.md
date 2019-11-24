@@ -5,7 +5,7 @@ Trips Unplanned is a fullstack app that helps users to plan a trip to major citi
 HTML, CSS, React.js, Node.js, Express.js, PostgreSQL, SQL
 
 # Important Links:
-Live Link: https://ajiles91-trips-unplanned-app.now.sh/
+Live Link: https://trips-unplanned.ajiles91.now.sh/
 API Repo: https://github.com/ajiles91/trips-unplanned-api
 
 # Screenshots:
