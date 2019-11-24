@@ -22,7 +22,7 @@ const AttractionsForm = props => (
         <input 
           type="text" 
           name="state" 
-          placeholder="state"
+          placeholder="State"
           autoComplete="off"
         />
 
