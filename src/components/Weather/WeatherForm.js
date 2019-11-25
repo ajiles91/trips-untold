@@ -5,7 +5,6 @@ const WeatherForm = props => (
   <div>
     <div className='greeting center'>
       <h1 className='section-header'>Type in a city to get the local weather!</h1>
-      <h2>You have to use US for United States as the input for country because of the API</h2>
     </div>
    
     <form className='attractions-form' onSubmit={props.getWeather}>

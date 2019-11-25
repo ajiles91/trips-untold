@@ -40,7 +40,7 @@ class AttractionsSection extends Component {
 
       if(countryNormalization === 'usa' || countryNormalization === 'united states'){
         countryNormalization = 'us'
-      } else{
+      } else {
         countryNormalization = country
       }
       
@@ -105,10 +105,7 @@ class AttractionsSection extends Component {
     }
 
     getMoreAttractionsBackward = () => {
-      //if start less than or equal to zero, ignore request
-      //else, move backwards
-      //start = start - 8;
-      //end = end - 8;
+      
       if (this.state.sliceStart > 0) {
         let start = this.state.sliceStart - 8;
         let end = this.state.sliceEnd - 8;
@@ -140,10 +137,6 @@ class AttractionsSection extends Component {
     }
 
     getMoreAttractionsForward = () => {
-      // start = start + 8
-      //end = end + 8
-      //moreLocations = this.state.xIDs(start, end);
-
       let start = this.state.sliceStart + 8;
       let end =  this.state.xIDs.length - this.state.sliceEnd >= 8 ? this.state.sliceEnd + 8 : this.state.xIDs.length - this.state.sliceEnd;
       if (end <= this.state.xIDs.length-1) {
