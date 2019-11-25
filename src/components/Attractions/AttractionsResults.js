@@ -24,7 +24,7 @@ export default class AttractionsResults extends Component {
                             return (
                                 <div className='result'>
                                     <AttractionsImage
-                                        src={attraction.preview ? attraction.preview.source : '' }
+                                        src={attraction.preview ? attraction.preview.source : 'No Photo Available' }
 
                                     />
                                     <AttractionsInfo
@@ -42,7 +42,7 @@ export default class AttractionsResults extends Component {
                     </div>
                 </div>                
                 
-                <div className = 'buttons-section'>
+                <div className = 'buttons-section-bottom'>
                     {backwardButton}
                     {fwdButton}
                 </div>
