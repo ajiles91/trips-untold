@@ -12,7 +12,7 @@ export default class AttractionsResults extends Component {
 
         return (
             <div className='whole-attraction-result'>
-                <div className = 'buttons-section'>
+                <div className = 'buttons-section-top'>
                     {backwardButton}
                     {fwdButton}
                 </div>
