@@ -22,46 +22,62 @@ class WeatherSection extends Component {
   
     getWeather = async (event) => {
       event.preventDefault();
-
       const city = event.target.elements.city.value;
       const country = event.target.elements.country.value;
-      
-      var countryNormalization = country.toLowerCase();
-
-      if (countryNormalization === 'usa' || countryNormalization === 'united states') {
-        countryNormalization = 'us'
-      } else {
-        countryNormalization = country
-      }      
-
-
-      const API_KEY = 'f3d7f5d4c72cfbaa2f55436ddc5646b1';
       if (country && city) {
-        const api_call = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryNormalization}&appid=${API_KEY}`
-        );
-  
-        const response = await api_call.json();
-  
-        this.setState({
-          city: `${response.name}, ${response.sys.country}`,
-          country: response.sys.country,
-          main: response.weather[0].main,
-          temp: response.main.temp,
-          humidity: response.main.humidity,
-          temp_max: response.main.temp_max,
-          temp_min: response.main.temp_min,
-          description: response.weather[0].description,
-          error: false
-        });
+        
+        const state = event.target.elements.state.value;
+        var countryNormalization = country.toLowerCase();
 
-      } else {
-        this.setState({
-          error: true
-        });
-      }
-    };
-    
+        if (countryNormalization === 'usa' || countryNormalization === 'united states') {
+          countryNormalization = 'us'
+        } else {
+          countryNormalization = country
+        }
+        
+        
+        const cityCapitalized = city.charAt(0).toUpperCase() + city.slice(1)
+        const COORD_API_KEY='4d5000e35eb84d3fa4347e847eaef5bd'
+
+        fetch(`https://api.opencagedata.com/geocode/v1/json?q=${city}%20${state}%20${country}&key=${COORD_API_KEY}&language=en&pretty=1`)
+        .then(res => res.json())
+          .then(responseJson => { 
+            this.setState({
+              lat: responseJson.results[0].geometry.lat,
+              lon: responseJson.results[0].geometry.lng,
+              state: state,
+            error: false,
+            })
+          
+
+            let lat = this.state.lat;
+            let lon = this.state.lon;
+
+            const API_KEY = 'f3d7f5d4c72cfbaa2f55436ddc5646b1'
+          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
+          .then(res => res.json())
+            .then(response => { 
+              //responseJson contains the response from the 2nd call.
+              this.setState({
+                city: `${cityCapitalized}, ${response.name}, ${response.sys.country}`,
+                country: response.sys.country,
+                main: response.weather[0].main,
+                temp: response.main.temp,
+                humidity: response.main.humidity,
+                temp_max: response.main.temp_max,
+                temp_min: response.main.temp_min,
+                description: response.weather[0].description,
+                error: false
+              });
+            })
+          }) 
+        } else {
+          this.setState({
+            error: true
+          })
+        }
+    }
+
     render() {
       return (
         <div className="wrapper">
