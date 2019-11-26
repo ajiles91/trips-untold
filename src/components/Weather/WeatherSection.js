@@ -16,7 +16,8 @@ class WeatherSection extends Component {
         country: undefined,
         humidity: undefined,
         description: undefined,
-        error: undefined
+        error: undefined,
+        noResultsError:false,
       };
     }
   
@@ -58,17 +59,26 @@ class WeatherSection extends Component {
           .then(res => res.json())
             .then(response => { 
               //responseJson contains the response from the 2nd call.
-              this.setState({
-                city: `${cityCapitalized}, ${response.name}, ${response.sys.country}`,
-                country: response.sys.country,
-                main: response.weather[0].main,
-                temp: response.main.temp,
-                humidity: response.main.humidity,
-                temp_max: response.main.temp_max,
-                temp_min: response.main.temp_min,
-                description: response.weather[0].description,
-                error: false
-              });
+
+              if (response.total_results === 0){
+                this.setState({
+                  noResultsError: true
+                })
+
+              } else {
+                this.setState({
+                  city: `${cityCapitalized}, ${response.name}, ${response.sys.country}`,
+                  country: response.sys.country,
+                  main: response.weather[0].main,
+                  temp: response.main.temp,
+                  humidity: response.main.humidity,
+                  temp_max: response.main.temp_max,
+                  temp_min: response.main.temp_min,
+                  description: response.weather[0].description,
+                  error: false
+                });
+              }
+              
             })
           }) 
         } else {
@@ -81,7 +91,12 @@ class WeatherSection extends Component {
     render() {
       return (
         <div className="wrapper">
-          <WeatherForm getWeather={this.getWeather} />
+          <WeatherForm 
+          getWeather={this.getWeather}
+          error={this.state.error}
+          noResultsError={this.state.noResultsError}
+          
+           />
           <WeatherResults 
             temp={this.state.temp} 
             humidity={this.state.humidity}
