@@ -58,6 +58,7 @@ class WeatherSection extends Component {
               })
             }
 
+
             let lat = this.state.lat;
             let lon = this.state.lon;
 
@@ -80,6 +81,12 @@ class WeatherSection extends Component {
                 error: false
               });
               
+            })
+            .catch(() =>{
+              //2nd fetch
+            })
+            .catch(() => {
+              //1st fetch
             })
           }) 
         } else {
