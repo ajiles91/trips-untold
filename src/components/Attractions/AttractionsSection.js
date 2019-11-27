@@ -24,7 +24,8 @@ class AttractionsSection extends Component {
         backButtonDisabled : true,
         fwdButtonDisabled : false,
         disabled: false,
-        userClicked: false
+        userClicked: false,
+        noResultsError: false
       };
     }
   
@@ -53,8 +54,7 @@ class AttractionsSection extends Component {
             this.setState({
               noResultsError: true
             })
-
-            
+ 
 
           } else {
             this.setState({
@@ -193,7 +193,8 @@ class AttractionsSection extends Component {
             <div className="col-xs-7 form-container">
                   
               <AttractionsForm 
-                getAttractions={this.getAttractions} 
+                getAttractions={this.getAttractions}
+                noResultsError={this.state.noResultsError} 
               />
               
               <AttractionsResults 

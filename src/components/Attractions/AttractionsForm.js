@@ -11,6 +11,7 @@ const AttractionsForm = props => (
    
     <form className='attractions-form' onSubmit={props.getAttractions}>
       <div>{props.error ? error() : ""}</div>
+      <div>{props.noResultsError ? noResultsError() : ""}</div>
         <input 
           type="text" 
           name="city" 
@@ -59,6 +60,15 @@ const error = props => {
     </div>
   );
 };
+
+const noResultsError = props => {
+  return (
+    <div className="alert alert-danger mx-5" role="alert">
+      No Results Found!
+    </div>
+  );
+
+}
   
 
 export default AttractionsForm;
