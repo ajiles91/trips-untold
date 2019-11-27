@@ -61,7 +61,7 @@ const error = props => {
 const noResultsError = props => {
   return (
     <div className="alert alert-danger mx-5" role="alert">
-      Please Enter City and Country!
+      No Results Found!
     </div>
   );
 

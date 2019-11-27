@@ -43,11 +43,13 @@ class WeatherSection extends Component {
         fetch(`https://api.opencagedata.com/geocode/v1/json?q=${city}%20${state}%20${country}&key=${COORD_API_KEY}&language=en&pretty=1`)
         .then(res => res.json())
           .then(responseJson => { 
-            console.log('total restuls', responseJson.total_results)
+           
             if (responseJson.total_results === 0){
               this.setState({
                 noResultsError: true
               })
+
+              
 
             } else {
               this.setState({

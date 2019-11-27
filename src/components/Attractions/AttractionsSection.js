@@ -43,16 +43,27 @@ class AttractionsSection extends Component {
       } else {
         countryNormalization = country
       }
+      const COORD_API_KEY='4d5000e35eb84d3fa4347e847eaef5bd'
       
-      fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${city}&country=${countryNormalization}&apikey=${ATTRACTION_API_KEY}`)
+      fetch(`https://api.opencagedata.com/geocode/v1/json?q=${city}%20${state}%20${country}&key=${COORD_API_KEY}&language=en&pretty=1`)
        .then(res => res.json())
         .then(responseJson => { 
-          this.setState({
-            lat: responseJson.lat,
-            lon: responseJson.lon,
-            state: state,
-           error: false,
-          })
+
+          if (responseJson.total_results === 0){
+            this.setState({
+              noResultsError: true
+            })
+
+            
+
+          } else {
+            this.setState({
+              lat: responseJson.results[0].geometry.lat,
+              lon: responseJson.results[0].geometry.lng,
+              state: state,
+            error: false,
+            })
+          }
           //responseJson contains the response from the first call.
 
           let lat = this.state.lat;
