@@ -43,13 +43,19 @@ class WeatherSection extends Component {
         fetch(`https://api.opencagedata.com/geocode/v1/json?q=${city}%20${state}%20${country}&key=${COORD_API_KEY}&language=en&pretty=1`)
         .then(res => res.json())
           .then(responseJson => { 
-            this.setState({
-              lat: responseJson.results[0].geometry.lat,
-              lon: responseJson.results[0].geometry.lng,
-              state: state,
-            error: false,
-            })
-          
+            if (responseJson.total_results === 0){
+              this.setState({
+                noResultsError: true
+              })
+
+            } else {
+              this.setState({
+                lat: responseJson.results[0].geometry.lat,
+                lon: responseJson.results[0].geometry.lng,
+                state: state,
+                error: false,
+              })
+            }
 
             let lat = this.state.lat;
             let lon = this.state.lon;
@@ -60,24 +66,18 @@ class WeatherSection extends Component {
             .then(response => { 
               //responseJson contains the response from the 2nd call.
 
-              if (response.total_results === 0){
-                this.setState({
-                  noResultsError: true
-                })
-
-              } else {
-                this.setState({
-                  city: `${cityCapitalized}, ${response.name}, ${response.sys.country}`,
-                  country: response.sys.country,
-                  main: response.weather[0].main,
-                  temp: response.main.temp,
-                  humidity: response.main.humidity,
-                  temp_max: response.main.temp_max,
-                  temp_min: response.main.temp_min,
-                  description: response.weather[0].description,
-                  error: false
-                });
-              }
+              
+              this.setState({
+                city: `${cityCapitalized}, ${response.name}, ${response.sys.country}`,
+                country: response.sys.country,
+                main: response.weather[0].main,
+                temp: response.main.temp,
+                humidity: response.main.humidity,
+                temp_max: response.main.temp_max,
+                temp_min: response.main.temp_min,
+                description: response.weather[0].description,
+                error: false
+              });
               
             })
           }) 
