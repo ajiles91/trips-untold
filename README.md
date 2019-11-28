@@ -32,4 +32,3 @@ Properties of Each Object
 
 # Future Features
 -be able to submit the form with the city info from the main page and have basic weather info, a restaurant and an attraction display on main page then click to each page for more info
-
