@@ -4,6 +4,12 @@ import AttractionsInfo from './AttractionsInfo';
 import './AttractionsResults.css'
 
 export default class AttractionsResults extends Component {
+    // constructor(props) {}
+    // static defaultProps = {
+    //     catName: "Sandy",
+    //     eyeColor: "deepblue",
+    //     age: "120"        
+    // }
     render() {
         
         const userClicked = this.props.userClicked;

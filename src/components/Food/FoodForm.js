@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, BrowserRouter } from 'react-router-dom';
 import './FoodForm.css'
 
 const FoodForm = props => (
@@ -34,17 +34,20 @@ const FoodForm = props => (
       <button>Get Restaurants</button>
     </form>
     <div className='buttons-section'>
-      <Link to ='/'>
-        <button>Back to Main Page</button>
-      </Link>
+      <BrowserRouter>
+        <Link to ='/'>
+          <button>Back to Main Page</button>
+        </Link>
 
-      <Link to ='/weather'>
-        <button>Go to Weather Page</button>
-      </Link>
+        <Link to ='/weather'>
+          <button>Go to Weather Page</button>
+        </Link>
 
-      <Link to ='/attractions'>
-        <button>Go to Attractions Page</button>
-      </Link>
+        <Link to ='/attractions'>
+          <button>Go to Attractions Page</button>
+        </Link>
+      </BrowserRouter>
+      
     </div>
   </div>
 );

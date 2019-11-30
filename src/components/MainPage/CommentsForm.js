@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import './CommentsForm.css'
 import config from '../../config'
+import CommentSubmissionModal from './CommentSubmissionModal'
 
 export default class CommentsForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username:'',
-      comment:''
+      comment:'',
+      showModal: false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -38,12 +40,31 @@ export default class CommentsForm extends Component {
     .then(response => response.json())
     .then(json => console.log(json))
     .then(()=>this.props.updateCommentsonMainPage())
+    .then(() =>{
+      this.setState({
+        showModal: true
+      })
+    })
   }
 
 
   render() {
+    const { showModal } = this.state;
+
     return (
       <div className = 'whole-form'>
+        <CommentSubmissionModal 
+          show={showModal}
+          text={'Your comment has been submitted!'}
+          onClose={(event) => {
+            if (event.target.className !== "modal-content") {
+              this.setState({
+                showModal: false
+              })
+            }
+            
+          }}
+        />
         <form className="submit-idea" onSubmit={this.handleSubmit}>
           <legend className='paragraph'>
             Leave a comment here! Tell users about a restaurant or attraction they should check out!

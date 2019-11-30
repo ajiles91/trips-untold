@@ -1,4 +1,3 @@
-export default WeatherSection;
 import React, { Component } from "react";
 import "./CommentSubmissionModal.css";
 
@@ -16,7 +15,7 @@ class CommentSubmissionModal extends Component {
       <div onClick={onClose} className="modal">
         <div className="modal-content">
           <p>{text}</p>
-          <button onClick={onClose}>X</button>
+          <button className="close" onClick={onClose}>X</button>
         </div>
       </div>
     );
