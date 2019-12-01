@@ -1,4 +1,14 @@
-.attractions-form input{
+.attractions-form input {
+  display: block;
+  padding: .2em .5em;
+  margin: auto;
+  width: 75%;
+  font-size: 4vh;
+  background-color:white;
+  border-radius: 20px;
+}
+
+.attractions-form select {
   display: block;
   padding: .2em .5em;
   margin: auto;
