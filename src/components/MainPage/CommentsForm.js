@@ -40,33 +40,27 @@ export default class CommentsForm extends Component {
     .then(response => response.json())
     .then(json => console.log(json))
     .then(()=>this.props.updateCommentsonMainPage())
-    .then(() => {
+    .then((res) => {
       this.setState({
         showModal: true
       })
+      console.log('in handleSub:', this.state.showModal)
     })
   }
 
 
   render() {
     const { showModal } = this.state;
+    console.log('in render:', this.state.showModal)
 
     return (
       <div className = 'whole-form'>
         
-        <CommentSubmissionModal 
-          show={showModal}
-          text={'Your comment has been submitted!'}
-          onClose={(event) => {
-            if (event.target.className !== "modal-content") {
-              this.setState({
-                showModal: false
-              })
-            }
-          }}
-        />
+        
       
         <form className="submit-idea" onSubmit={this.handleSubmit}>
+
+       
           <legend className='paragraph'>
             Leave a comment here! Tell users about a restaurant or attraction they should check out!
           </legend>
@@ -101,6 +95,17 @@ export default class CommentsForm extends Component {
             </div>
               
           </form>
+          <CommentSubmissionModal 
+          showModal={showModal}
+          // text={'Your comment has been submitted!'}
+          onClose={(event) => {
+            if (event.target.className !== "modal-content") {
+              this.setState({
+                showModal: false
+              })
+            }
+          }}
+        />
       </div>
     );
   }

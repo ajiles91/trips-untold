@@ -8,13 +8,13 @@ class CommentSubmissionModal extends Component {
 
   render() {
     const { showModal, onClose, text } = this.props;
-
+    
     if (!showModal) return null;
 
     return (
       <div onClick={onClose} className="modal">
         <div className="modal-content">
-          <p>{text}</p>
+          <p>Your comment has been submitted!</p>
           <button className="close" onClick={onClose}>X</button>
         </div>
       </div>
