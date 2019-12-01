@@ -1,6 +1,6 @@
 import  React, {Component} from 'react';
 import CommentsForm from './CommentsForm'
-import { Link, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './MainPage.css'
 import CommentsDisplay from './CommentsDisplay'
 import config from '../../config'
@@ -45,8 +45,9 @@ export default class MainPage extends Component {
         </header>
 
         <div className = 'row-2'>
-          <BrowserRouter>
-            <Link to='/weather'>
+          
+          
+          <Link to='/weather'>
               <button className='flex-item'>Go To Weather</button>
             </Link>
 
@@ -57,7 +58,9 @@ export default class MainPage extends Component {
             <Link to='/attractions'>
               <button className='flex-item'>Go To Attractions</button>
             </Link>
-          </BrowserRouter>
+          
+            
+      
          
         </div>
 

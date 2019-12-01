@@ -1,6 +1,6 @@
 import React from "react";
 import './AttractionsForm.css'
-import { Link, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const AttractionsForm = props => (
   <div>
@@ -36,7 +36,7 @@ const AttractionsForm = props => (
       <button>Get Local Attractions</button>
     </form>
     <div className='buttons-section'>
-      <BrowserRouter>
+      
         <Link to ='/'>
           <button>Back to Main Page</button>
         </Link>
@@ -48,7 +48,7 @@ const AttractionsForm = props => (
         <Link to ='/food'>
           <button>Go to Food Page</button>
         </Link>
-      </BrowserRouter>
+      
       
 
     </div>

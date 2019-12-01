@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const WeatherForm = props => (
   <div>
@@ -33,7 +33,7 @@ const WeatherForm = props => (
       <button>Get Weather</button>
     </form>
     <div className='buttons-section'>
-      <BrowserRouter>
+      
         <Link to ='/'>
           <button>Back to Main Page</button>
         </Link>
@@ -45,7 +45,7 @@ const WeatherForm = props => (
         <Link to ='/attractions'>
           <button>Go to Attractions Page</button>
         </Link>
-      </BrowserRouter>
+      
     
     </div>
   

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './FoodForm.css'
 
 const FoodForm = props => (
@@ -34,7 +34,7 @@ const FoodForm = props => (
       <button>Get Restaurants</button>
     </form>
     <div className='buttons-section'>
-      <BrowserRouter>
+      
         <Link to ='/'>
           <button>Back to Main Page</button>
         </Link>
@@ -46,7 +46,7 @@ const FoodForm = props => (
         <Link to ='/attractions'>
           <button>Go to Attractions Page</button>
         </Link>
-      </BrowserRouter>
+      
       
     </div>
   </div>
