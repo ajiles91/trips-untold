@@ -88,7 +88,8 @@ class AttractionsSection extends Component {
               xIDs: theXIDs,
               userClicked: true
             })
-            
+            if(!this.state.fetchingData){
+              this.pauseFetchCalls();
             let maxFetchCount = this.state.xIDs.length >= 8 ? 8 : this.state.xIDs.length-1;
             let locations = theXIDs.slice(0,maxFetchCount).map(async xid => {
               return await this.getLocation(xid)
@@ -102,7 +103,7 @@ class AttractionsSection extends Component {
                 userClicked: true
               })
             })
-      
+          }
         })
       })
     };// end getAttractions
