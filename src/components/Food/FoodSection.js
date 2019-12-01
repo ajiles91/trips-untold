@@ -54,7 +54,7 @@ class FoodSection extends Component {
             noResultsError: true
           })
         }
-        console.log('Data:', this.state.restaurants)
+        
       } else {
         this.setState({
           error: true
