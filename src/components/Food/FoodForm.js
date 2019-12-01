@@ -18,12 +18,6 @@ const FoodForm = props => (
           autoComplete="off"
         />
 
-        {/* <input 
-          type="text" 
-          name="state" 
-          placeholder="state"
-          autoComplete="off"
-        /> */}
 
         <select
           placeholder="State or DC"

@@ -25,7 +25,8 @@ class AttractionsSection extends Component {
         fwdButtonDisabled : false,
         disabled: false,
         userClicked: false,
-        noResultsError: false
+        noResultsError: false,
+        fetchingData: false
       };
     }
   
@@ -106,12 +107,21 @@ class AttractionsSection extends Component {
       })
     };// end getAttractions
 
+    pauseFetchCalls = () => {
+      this.setState({ fetchingData : true }, ()=> {
+      setTimeout(()=> {
+      this.setState({ fetchingData : false });
+      }, 2000);
+      })
+    }
+
     getLocation = async (xid) => {
       const result = await fetch(`https://api.opentripmap.com/0.1/en/places/xid/${xid}?apikey=5ae2e3f221c38a28845f05b637c385bf96afbd0ee0efa31f1d54771e`)
         .then(res => res.json())
           .then(responseJson => {
             return responseJson
           })
+          .catch(err => alert(err.message))
       return result
     }
 
@@ -147,7 +157,10 @@ class AttractionsSection extends Component {
         }
     }
 
+    
     getMoreAttractionsForward = () => {
+      if(!this.state.fetchingData){
+        this.pauseFetchCalls();
       let start = this.state.sliceStart + 8;
       let end =  this.state.xIDs.length - this.state.sliceEnd >= 8 ? this.state.sliceEnd + 8 : this.state.xIDs.length - this.state.sliceEnd;
       if (end <= this.state.xIDs.length-1) {
@@ -179,6 +192,7 @@ class AttractionsSection extends Component {
       if (end >= this.state.xIDs.length - 1) {
         this.setState({ fwdButtonDisabled : true })
       }
+    }
     } else {
       this.setState({ fwdButtonDisabled : true })
     }
