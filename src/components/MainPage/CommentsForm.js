@@ -42,7 +42,9 @@ export default class CommentsForm extends Component {
     .then(()=>this.props.updateCommentsonMainPage())
     .then((res) => {
       this.setState({
-        showModal: true
+        showModal: true,
+        username:'',
+        comment:''
       })
       console.log('in handleSub:', this.state.showModal)
     })
