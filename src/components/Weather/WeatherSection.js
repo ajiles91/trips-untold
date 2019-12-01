@@ -19,7 +19,9 @@ class WeatherSection extends Component {
       error: undefined,
       noResultsError: false,
       isSubmitted: false,
-      cityRes: ''
+      cityRes: '',
+      countryRes:'',
+      stateRes:''
     };
   }
 
@@ -40,7 +42,7 @@ class WeatherSection extends Component {
         countryNormalization = country;
       }
 
-      const cityCapitalized = city.charAt(0).toUpperCase() + city.slice(1);
+      
       const COORD_API_KEY = "4d5000e35eb84d3fa4347e847eaef5bd";
 
       fetch(
@@ -59,7 +61,9 @@ class WeatherSection extends Component {
             this.setState({
               lat: responseJson.results[0].geometry.lat,
               lon: responseJson.results[0].geometry.lng,
-              cityRes: `${responseJson.results[0].components.city}, ${responseJson.results[0].components.state}, ${responseJson.results[0].components.country}`,
+              cityRes: responseJson.results[0].components.city,
+              stateRes: responseJson.results[0].components.state,
+              countryRes: responseJson.results[0].components.country,
               state: state,
               error: false
             });
@@ -78,10 +82,10 @@ class WeatherSection extends Component {
             })
             .then(response => {
               //responseJson contains the response from the 2nd call.
-              // city: `${cityCapitalized}, ${response.name}, ${response.sys.country}`,
+              
               this.setState({
-                // city: `${cityCapitalized}, ${response.name}, ${response.sys.country}`,
-                // country: response.sys.country,
+                city: `${city}, ${response.name}, ${response.sys.country}`,
+                country: response.sys.country,
                 main: response.weather[0].main,
                 temp: response.main.temp,
                 humidity: response.main.humidity,
@@ -112,8 +116,11 @@ class WeatherSection extends Component {
 
         {this.state.isSubmitted && <WeatherResults
           temp={this.state.temp}
+          city={this.state.city}
           humidity={this.state.humidity}
           cityRes={this.state.cityRes}
+          stateRes={this.state.stateRes}
+          countryRes={this.state.countryRes}
           main={this.state.main}
           temp_max={this.state.temp_max}
           temp_min={this.state.temp_min}
