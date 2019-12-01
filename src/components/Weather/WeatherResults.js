@@ -1,8 +1,19 @@
 import React from "react";
 import './WeatherResults.css'
 
-const WeatherResults = props => (
-	<div className="weather-info">
+const WeatherResults = props => {
+
+	let currentTempKelvin = props.temp
+	const currentTempFahrenheit = Math.floor(((currentTempKelvin-273.15)*1.8)+32)
+
+	let minTempKelvin = props.temp_min
+	const minTempFahrenheit = Math.floor(((minTempKelvin-273.15)*1.8)+32)
+
+	let maxTempKelvin = props.temp_max
+	const maxTempFahrenheit = Math.floor(((maxTempKelvin-273.15)*1.8)+32)
+
+	return(
+<div className="weather-info">
 	 {	
 	 	props.city && props.country && <p className="weather__key"> Location: 
 	 		<span className="weather__value"> { props.city }</span>
@@ -10,17 +21,17 @@ const WeatherResults = props => (
 	 }
 	 { 	
 	 	props.temp && <p className="weather__key"> Current Temperature: 
-	 		<span className="weather__value"> { props.temp }	</span>
+	 		<span className="weather__value"> {currentTempFahrenheit}&deg;F</span>
 	 	</p> 
 	 }
 	 { 	
 	 	props.temp_max && <p className="weather__key"> Temperature High: 
-	 		<span className="weather__value"> { props.temp_max }	</span>
+	 		<span className="weather__value"> {maxTempFahrenheit}&deg;F</span>
 	 	</p> 
 	 }
 	 { 	
 	 	props.temp_min && <p className="weather__key"> Temperature Low: 
-	 		<span className="weather__value"> { props.temp_min }	</span>
+	 		<span className="weather__value"> { minTempFahrenheit}&deg;F</span>
 	 	</p> 
 	 }
 	 { 	
@@ -37,6 +48,9 @@ const WeatherResults = props => (
 	 	props.error && <p className="weather__error">{ props.error }</p>  
 	 }
 	</div>
-);
+
+	)
+	
+}
 
 export default WeatherResults;
