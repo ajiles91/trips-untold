@@ -5,7 +5,7 @@ export default class FoodInfo extends Component {
 		return(
 			<div>
 				<header>{this.props.name}</header>
-				<p>Price:{this.props.price} out of 4 dollar signs</p>
+				<p>Price: {this.props.price} out of 4 dollar signs</p>
 				<a href={this.props.href}>Get More Info and Make Reservations Here!</a>
 			</div>
 		)

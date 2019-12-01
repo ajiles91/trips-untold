@@ -10,6 +10,7 @@ const FoodForm = props => (
     
     <form className='attractions-form' onSubmit={props.getFood}>
       <div>{props.error ? error() : ""}</div>
+      <div>{props.noResultsError ? noResultsError() : ""}</div>
         <input 
           type="text" 
           name="city" 
@@ -61,5 +62,12 @@ const error = props => {
   );
 };
   
+const noResultsError = props => {
+  return (
+    <div className="alert alert-danger mx-5" role="alert">
+      Sorry No Results Nearby!
+    </div>
+  );
+};
 
 export default FoodForm;

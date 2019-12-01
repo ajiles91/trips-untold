@@ -68,7 +68,7 @@ class WeatherSection extends Component {
               error: false
             });
           }
-          console.log('after geo call:',this.state.cityRes)
+          
           let lat = this.state.lat;
           let lon = this.state.lon;
 
@@ -105,7 +105,7 @@ class WeatherSection extends Component {
   };
 
   render() {
-    console.log(this.state.cityRes)
+  
     return (
       <div className="wrapper">
         <WeatherForm

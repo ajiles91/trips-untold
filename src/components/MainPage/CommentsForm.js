@@ -40,20 +40,19 @@ export default class CommentsForm extends Component {
     .then(response => response.json())
     .then(json => console.log(json))
     .then(()=>this.props.updateCommentsonMainPage())
-    .then((res) => {
+    .then(() => {
       this.setState({
         showModal: true,
         username:'',
         comment:''
       })
-      console.log('in handleSub:', this.state.showModal)
+    
     })
   }
 
 
   render() {
     const { showModal } = this.state;
-    console.log('in render:', this.state.showModal)
 
     return (
       <div className = 'whole-form'>

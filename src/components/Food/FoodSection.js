@@ -11,12 +11,19 @@ class FoodSection extends Component {
         country: undefined,
         state:undefined,
         restaurants: [],
-        error: undefined
+        error: undefined,
+        noResultsError: false
       };
     }
   
-    getFood = async (event) => {
+    getFood = async event => {
       event.preventDefault();
+      if (this.state.noResultsError === true){
+        this.setState({
+          noResultsError: false
+        })
+      }
+      
     
       const city = event.target.elements.city.value;
       const country = event.target.elements.country.value;
@@ -34,7 +41,7 @@ class FoodSection extends Component {
         const api_call = await fetch(
           `https://opentable.herokuapp.com/api/restaurants?city=${city}&state=${state}&country=${countryNormalization}`
         );
-  
+        
         const response = await api_call.json();
         
         this.setState({
@@ -42,6 +49,12 @@ class FoodSection extends Component {
           error: false,
         });
 
+        if (response.restaurants.length === 0) {
+          this.setState({
+            noResultsError: true
+          })
+        }
+        console.log('Data:', this.state.restaurants)
       } else {
         this.setState({
           error: true
@@ -55,6 +68,8 @@ class FoodSection extends Component {
         <div className="wrapper">
           <FoodForm 
             getFood={this.getFood} 
+            error={this.state.error}
+            noResultsError={this.state.noResultsError}
           />
           <FoodResults 
             restaurants={data}
