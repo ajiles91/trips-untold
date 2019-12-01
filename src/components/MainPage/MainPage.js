@@ -5,7 +5,6 @@ import './MainPage.css'
 import CommentsDisplay from './CommentsDisplay'
 import config from '../../config'
 import CommentsContext from './CommentsContext';
-import CommentSubmissionModal from './CommentSubmissionModal';
 
 export default class MainPage extends Component {
   constructor(props) {
@@ -59,12 +58,9 @@ export default class MainPage extends Component {
             <Link to='/attractions'>
               <button className='flex-item'>Go To Attractions</button>
             </Link>
-          
-            
       
          
         </div>
-        <CommentSubmissionModal />
 
         <CommentsContext.Provider value ={{comments:this.state.comments}}>
           <CommentsForm updateCommentsonMainPage={this.updateCommentsonMainPage}/>

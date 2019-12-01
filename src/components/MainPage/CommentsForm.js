@@ -40,7 +40,7 @@ export default class CommentsForm extends Component {
     .then(response => response.json())
     .then(json => console.log(json))
     .then(()=>this.props.updateCommentsonMainPage())
-    .then(() =>{
+    .then(() => {
       this.setState({
         showModal: true
       })
@@ -53,6 +53,7 @@ export default class CommentsForm extends Component {
 
     return (
       <div className = 'whole-form'>
+        
         <CommentSubmissionModal 
           show={showModal}
           text={'Your comment has been submitted!'}
