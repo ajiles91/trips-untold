@@ -126,6 +126,8 @@ class AttractionsSection extends Component {
     }
 
     getMoreAttractionsBackward = () => {
+      if(!this.state.fetchingData){
+        this.pauseFetchCalls();
       
       if (this.state.sliceStart > 0) {
         let start = this.state.sliceStart - 8;
@@ -155,6 +157,7 @@ class AttractionsSection extends Component {
         } else {
             this.setState({ backButtonDisabled : true })
         }
+      }
     }
 
     
@@ -196,7 +199,6 @@ class AttractionsSection extends Component {
       this.setState({ fwdButtonDisabled : true })
     }
     }
-    
     }
 
 
