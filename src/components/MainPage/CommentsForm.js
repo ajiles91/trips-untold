@@ -62,9 +62,9 @@ export default class CommentsForm extends Component {
                 showModal: false
               })
             }
-            
           }}
         />
+      
         <form className="submit-idea" onSubmit={this.handleSubmit}>
           <legend className='paragraph'>
             Leave a comment here! Tell users about a restaurant or attraction they should check out!
