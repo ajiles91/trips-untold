@@ -192,10 +192,11 @@ class AttractionsSection extends Component {
       if (end >= this.state.xIDs.length - 1) {
         this.setState({ fwdButtonDisabled : true })
       }
-    }
     } else {
       this.setState({ fwdButtonDisabled : true })
     }
+    }
+    
     }
 
 
