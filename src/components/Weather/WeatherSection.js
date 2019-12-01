@@ -17,7 +17,9 @@ class WeatherSection extends Component {
       humidity: undefined,
       description: undefined,
       error: undefined,
-      noResultsError: false
+      noResultsError: false,
+      isSubmitted: false,
+      cityRes: ''
     };
   }
 
@@ -57,11 +59,12 @@ class WeatherSection extends Component {
             this.setState({
               lat: responseJson.results[0].geometry.lat,
               lon: responseJson.results[0].geometry.lng,
+              cityRes: `${responseJson.results[0].components.city}, ${responseJson.results[0].components.state}, ${responseJson.results[0].components.country}`,
               state: state,
               error: false
             });
           }
-
+          console.log('after geo call:',this.state.cityRes)
           let lat = this.state.lat;
           let lon = this.state.lon;
 
@@ -75,16 +78,17 @@ class WeatherSection extends Component {
             })
             .then(response => {
               //responseJson contains the response from the 2nd call.
-
+              // city: `${cityCapitalized}, ${response.name}, ${response.sys.country}`,
               this.setState({
-                city: `${cityCapitalized}, ${response.name}, ${response.sys.country}`,
-                country: response.sys.country,
+                // city: `${cityCapitalized}, ${response.name}, ${response.sys.country}`,
+                // country: response.sys.country,
                 main: response.weather[0].main,
                 temp: response.main.temp,
                 humidity: response.main.humidity,
                 temp_max: response.main.temp_max,
                 temp_min: response.main.temp_min,
                 description: response.weather[0].description,
+                isSubmitted: true,
                 error: false
               });
             });
@@ -97,6 +101,7 @@ class WeatherSection extends Component {
   };
 
   render() {
+    console.log(this.state.cityRes)
     return (
       <div className="wrapper">
         <WeatherForm
@@ -104,17 +109,20 @@ class WeatherSection extends Component {
           error={this.state.error}
           noResultsError={this.state.noResultsError}
         />
-        <WeatherResults
+
+        {this.state.isSubmitted && <WeatherResults
           temp={this.state.temp}
           humidity={this.state.humidity}
-          city={this.state.city}
+          cityRes={this.state.cityRes}
           main={this.state.main}
           temp_max={this.state.temp_max}
           temp_min={this.state.temp_min}
           country={this.state.country}
           description={this.state.description}
           error={this.state.error}
-        />
+          /> 
+          }
+        
       </div>
     );
   }

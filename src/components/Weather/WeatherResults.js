@@ -12,11 +12,11 @@ const WeatherResults = props => {
 	let maxTempKelvin = props.temp_max
 	const maxTempFahrenheit = Math.floor(((maxTempKelvin-273.15)*1.8)+32)
 
-	return(
-<div className="weather-info">
+	return (
+		<div className="weather-info">
 	 {	
 	 	props.city && props.country && <p className="weather__key"> Location: 
-	 		<span className="weather__value"> { props.city }</span>
+	 		<span className="weather__value"> { props.cityRes }</span>
 	 	</p> 
 	 }
 	 { 	
