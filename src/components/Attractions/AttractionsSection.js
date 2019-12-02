@@ -112,7 +112,7 @@ class AttractionsSection extends Component {
       this.setState({ fetchingData : true }, ()=> {
       setTimeout(()=> {
       this.setState({ fetchingData : false });
-      }, 2000);
+      }, 2500);
       })
     }
 
